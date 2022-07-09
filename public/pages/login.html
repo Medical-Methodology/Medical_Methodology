@@ -33,6 +33,29 @@
                 </div>
             <div id = 'lower-space'></div>
         </header>
+
+        <br></br>
+
+        <main>
+            <div id = 'details'>
+                <h1>Login</h1>
+
+                <form action = 'login.html' method = 'POST' id = 'login-form'>
+                    <input type = 'text' placeholder = 'Email...' name = 'email' id = 'email'></input>
+                    <br></br>
+                    <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
+                                        
+                    
+                    <!-- Used for injecting HTML when JS detects sign up error -->
+                    <div id = 'error'></div> 
+
+                    
+                    <p id = 'small-gap'></p>
+
+                    <button id = 'login-button'>Login</button>
+                </form>
+            </div>
+        </main>
     </body>
 
 </html>

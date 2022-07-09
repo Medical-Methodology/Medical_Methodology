@@ -74,3 +74,54 @@ nav
     border-width: 3px;
     border-radius: 5px;
 }
+
+#details
+{
+    border: black solid;
+    border-width: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    padding-top: 15px;
+    width: fit-content;
+    margin: auto;
+}
+
+#details h1
+{
+    font-size: 40px;
+    text-decoration: underline;
+    padding-bottom: 15px;
+}
+
+#email, #password
+{
+    background-color: lightseagreen;
+    border: black solid;
+    border-width: 2px;
+    border-radius: 3px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+::placeholder
+{
+    color: white;
+}
+
+#small-gap
+{
+    padding: 10px;
+}
+
+#login-button
+{
+    font-size: 16px;
+    background-color: red;
+    border: black solid;
+    border-width: 4px;
+    border-radius: 5px;
+    padding: 15px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
