@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+    <head>
+        <!--Boilerplate-->
+        <meta charset = "UTF-8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1" />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+
+        <!--End-->
+
+        <link rel = "stylesheet" href = "../stylers/signup.css" />
+        <title>Sign Up</title>
+    </head>
+
+    <body>
+        <header>
+            <div id = 'upper-space'></div>
+                <div id = 'bar'>
+                    <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
+                    <h1>Medical Methodology</h1>
+                    <nav>
+                        <ul class = 'nav-links'>
+                            <li><a class = 'nav-link' href = '../index.html'>Home</a></li>
+                            <li><a class = 'nav-link' id = 'selected' href = 'signup.html'>Sign Up</a></li>
+                            <li><a class = 'nav-link' href = 'login.html'>Login</a></li>
+                            <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
+                            <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            <div id = 'lower-space'></div>
+        </header>
+
+        <br></br>
+
+        <main>
+            <div id = 'details'>
+                <h1>Sign Up</h1>
+
+                <form action = 'login.html' method = 'POST' id = 'login-form'>
+                    <input type = 'text' placeholder = 'Email...' name = 'email' id = 'email'></input>
+                    <br></br>
+                    <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
+                    
+                    <p id = 'password-limit'>**Password must be more than 6 characters.</p>
+                    
+                    
+                    <!-- Used for injecting HTML when JS detects sign up error -->
+                    <div id = 'error'></div> 
+
+                    
+                    <p id = 'small-gap'></p>
+
+                    <button id = 'login-button'>Login</button>
+                </form>
+            </div>
+        </main>
+    </body>
+
+</html>
