@@ -14,9 +14,31 @@ loginForm.addEventListener('submit', (e) =>
     // Signs user in
     auth.signInWithEmailAndPassword(email, password).then(cred =>
     {
-        // Redirects user
-        location.href = 'user.html';
+        var admin = false;
 
+        // Checks if user is Admin
+        db.collection('admin').get().then(snapshot =>
+        {
+            console.log(cred.uid);
+            // Iterates through Admin collection
+            snapshot.docs.forEach(doc =>
+            {
+                // Stores Admin user data in constant
+                const information = doc.data();
+
+                // Compares logged in user ID with document ID
+                if (cred.user.uid == information.uid)
+                    admin = true;
+            })
+
+            // Redirects user depending on type
+            if (admin)
+                location.href = 'admin.html';
+            else
+                location.href = 'user.html';
+        })
+
+    // Catches error from improper login
     }).catch(function(error)
     {
         // Creates error message

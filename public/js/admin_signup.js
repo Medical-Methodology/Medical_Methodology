@@ -16,7 +16,7 @@ signUpForm.addEventListener('submit', (e) =>
     auth.createUserWithEmailAndPassword(email, password).then(cred =>
     {
         // Creates document within collection containing user-info
-        db.collection('users').doc(cred.user.uid).set(
+        db.collection('admin').doc(cred.user.uid).set(
         {
             name : signUpForm['first-name'].value + ' ' + signUpForm['last-name'].value,
             uid : cred.user.uid
@@ -29,7 +29,7 @@ signUpForm.addEventListener('submit', (e) =>
         // Delay to allow DB to store data before redirect
         setTimeout(function() 
         {
-            location.href = "user.html";
+            location.href = "admin.html";
         }, 
         1000
         );

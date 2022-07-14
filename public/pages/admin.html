@@ -5,7 +5,6 @@
         <meta charset = "UTF-8" />
         <meta name = "viewport" content = "width=device-width, initial-scale = 1" />
         
-        <!-- Grabs custom fonts from Google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,23 +12,23 @@
         <!--End-->
 
         <!-- Links to CSS file -->
-        <link rel = "stylesheet" href = "../stylers/dictionary.css" />
+        <link rel = "stylesheet" href = "../stylers/admin.css" />
 
-        <title>Dictionary</title>
+        <title>Admin</title>
     </head>
 
     <body>
         <header>
             <div id = 'upper-space'></div>
                 <div id = 'bar'>
-                    <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
+                    <img src = 'images/logo.png' alt = 'logo' id = 'logo'>
                     <a id = 'title-button' href = '../index.html'>Medical Methodology</a>
                     <nav>
                         <ul class = 'nav-links'>
                             <li><a class = 'nav-link' href = '../index.html'>Home</a></li>
-                            <li><a class = 'nav-link' id = 'selected' href = 'dictionary.html'>Dictionary</a></li>
+                            <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
+                            <li><a class = 'nav-link' href = 'create_content.html'>Create</a></li>
                             <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
-                            <button id = 'logout-button'>Logout</button>
                         </ul>
                     </nav>
                 </div>
@@ -37,17 +36,14 @@
         </header>
 
         <main>
-            <section id = 'glossary'>
-                <h1>Dictionary</h1>
-                <div id = 'create'></div>
-                <div id = 'terms'></div>
-            </section>
+
         </main>
+
         <!-- Imports certain Firebase services -->
         <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
         <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
         <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
-
+        
         <!-- Firebase configuration to link up to project on backend -->
         <script>
             var config = 
@@ -69,8 +65,5 @@
             db.settings({timestampsInSnapshots : true});
         </script>
 
-        <!-- Links to JS file -->
-        <!-- Place JS files at end of body to allow them to reference HTML elements -->
-        <script src = '../js/dictionary.js'></script>
     </body>
 </html>

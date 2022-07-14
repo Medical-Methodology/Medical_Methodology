@@ -88,3 +88,39 @@ nav
     font-size: 40px;
     padding: 15px;
 }
+
+#term-def input
+{
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: black solid;
+    border-width: 3px;
+    border-radius: 5px;
+}
+
+#new-term button
+{
+    font-size: 16px;
+    color: black;
+    background-color: red;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: black solid;
+    border-width: 3px;
+    border-radius: 5px;
+}
+
+#small-gap
+{
+    padding: 8px;
+}
+
+::placeholder
+{
+    font-size: 18px;
+    color: black;
+}
