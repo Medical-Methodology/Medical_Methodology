@@ -20,7 +20,7 @@
             <div id = 'upper-space'></div>
                 <div id = 'bar'>
                     <img src = 'images/logo.png' alt = 'logo' id = 'logo'>
-                    <h1>Medical Methodology</h1>
+                    <a id = 'title-button' href = 'index.html'>Medical Methodology</a>
                     <nav>
                         <ul class = 'nav-links'>
                             <li><a class = 'nav-link' id = 'selected' href = 'index.html'>Home</a></li>
@@ -33,5 +33,81 @@
                 </div>
             <div id = 'lower-space'></div>
         </header>
+
+        <main>
+            <section id = 'first-section'>
+                <div id = 'top-info'>
+                    <img src = 'images/studying-stock.jpg'>
+                    <h1>Learning Awaits</h1>
+                </div>
+            </section>
+
+            <div class = 'spacer'></div>
+
+            <section>
+                <h1>Why Use Medical Methodology?</h1>
+                            
+                <div id = 'reasons'>
+                    <div id = 'left-gap'></div>
+
+                    <div id = 'left'>
+                        <h2>Personalized Content</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+
+                    <div class = 'inbetween'></div>
+
+                    <div id = 'center'>
+                        <h2>Learn at Your Own Pace</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+
+                    <div class = 'inbetween'></div>
+
+                    <div id = 'right'>
+                        <h2>Free Service</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                    
+                    <div id = 'right-gap'></div>
+                </div>
+            </section>
+
+            <div class = 'spacer'></div>
+
+            <section id = 'bottom-content'>
+                <div id = 'left-gap'></div>
+                <p>We strive to provide free education to all.</p>
+                <p>© 2022 Medical Methodology</p>
+                <div id = 'right gap'></div>
+            </section>
+        </main>
+
+        <!-- Imports certain Firebase services -->
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+        
+        <!-- Firebase configuration to link up to project on backend -->
+        <script>
+            var config = 
+            {
+                apiKey: "AIzaSyAO9fiKvzaBHcRE7USzWk_PKLZK59d1jho",
+                authDomain: "medical-methodology.firebaseapp.com",
+                projectId: "medical-methodology",
+                storageBucket: "medical-methodology.appspot.com",
+                messagingSenderId: "261830586183",
+                appId: "1:261830586183:web:3f2f805aa432d2fa1c2662",
+                measurementId: "G-237XPXZER0"
+            };
+            
+            firebase.initializeApp(config);
+    
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+    
+            db.settings({timestampsInSnapshots : true});
+        </script>
+
     </body>
 </html>

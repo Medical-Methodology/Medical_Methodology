@@ -5,13 +5,16 @@
         <meta charset = "UTF-8" />
         <meta name = "viewport" content = "width=device-width, initial-scale = 1" />
         
+        <!-- Grabs custom fonts from Google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
 
         <!--End-->
-
+        
+        <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/signup.css" />
+
         <title>Sign Up</title>
     </head>
 
@@ -20,7 +23,7 @@
             <div id = 'upper-space'></div>
                 <div id = 'bar'>
                     <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
-                    <h1>Medical Methodology</h1>
+                    <a id = 'title-button' href = '../index.html'>Medical Methodology</a>
                     <nav>
                         <ul class = 'nav-links'>
                             <li><a class = 'nav-link' href = '../index.html'>Home</a></li>
@@ -41,16 +44,21 @@
                 <h1>Sign Up</h1>
 
                 <form action = 'signup.html' method = 'POST' id = 'signup-form'>
-                    <input type = 'text' placeholder = 'Email...' name = 'email' id = 'email'></input>
+                    <input type = 'text' placeholder = 'First Name...' name = 'first-name' id = 'first-name'></input>
                     <br></br>
-                    <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
                     
-                    <p id = 'password-limit'>**Password must be more than 6 characters.</p>
-                    
-                    
+                    <input type = 'text' placeholder = 'Last Name...' name = 'last-name' id = 'last-name'></input>
+                    <br></br>
+
+                    <input type = 'text' placeholder = 'Email...' name = 'email' id = 'email'></input>
+
+                    <div id = 'error-gap'></div>
                     <!-- Used for injecting HTML when JS detects sign up error -->
                     <div id = 'error'></div> 
 
+                    <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
+                    
+                    <p id = 'password-limit'>**Password must be more than 6 characters.</p>
 
                     <p id = 'small-gap'></p>
 
@@ -58,6 +66,35 @@
                 </form>
             </div>
         </main>
-    </body>
 
+        <!-- Imports certain Firebase services -->
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+        
+        <!-- Firebase configuration to link up to project on backend -->
+        <script>
+            var config = 
+            {
+                apiKey: "AIzaSyAO9fiKvzaBHcRE7USzWk_PKLZK59d1jho",
+                authDomain: "medical-methodology.firebaseapp.com",
+                projectId: "medical-methodology",
+                storageBucket: "medical-methodology.appspot.com",
+                messagingSenderId: "261830586183",
+                appId: "1:261830586183:web:3f2f805aa432d2fa1c2662",
+                measurementId: "G-237XPXZER0"
+            };
+            
+            firebase.initializeApp(config);
+    
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+    
+            db.settings({timestampsInSnapshots : true});
+        </script>
+
+        <!-- Links to JS file -->
+        <!-- Place JS files at end of body to allow them to reference HTML elements -->
+        <script src = '../js/signup.js'></script>
+    </body>
 </html>

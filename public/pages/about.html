@@ -5,13 +5,16 @@
         <meta charset = "UTF-8" />
         <meta name = "viewport" content = "width=device-width, initial-scale = 1" />
         
+        <!-- Grabs custom fonts from Google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
 
         <!--End-->
-
+        
+        <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/about.css" />
+        
         <title>About Us</title>
     </head>
 
@@ -20,7 +23,7 @@
             <div id = 'upper-space'></div>
                 <div id = 'bar'>
                     <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
-                    <h1>Medical Methodology</h1>
+                    <a id = 'title-button' href = '../index.html'>Medical Methodology</a>
                     <nav>
                         <ul class = 'nav-links'>
                             <li><a class = 'nav-link' href = '../index.html'>Home</a></li>
@@ -33,6 +36,32 @@
                 </div>
             <div id = 'lower-space'></div>
         </header>
-    </body>
 
+        <!-- Imports certain Firebase services -->
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+        <!-- Firebase configuration to link up to project on backend -->
+        <script>
+            var config = 
+            {
+                apiKey: "AIzaSyAO9fiKvzaBHcRE7USzWk_PKLZK59d1jho",
+                authDomain: "medical-methodology.firebaseapp.com",
+                projectId: "medical-methodology",
+                storageBucket: "medical-methodology.appspot.com",
+                messagingSenderId: "261830586183",
+                appId: "1:261830586183:web:3f2f805aa432d2fa1c2662",
+                measurementId: "G-237XPXZER0"
+            };
+            
+            firebase.initializeApp(config);
+    
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+    
+            db.settings({timestampsInSnapshots : true});
+        </script>
+
+    </body>
 </html>
