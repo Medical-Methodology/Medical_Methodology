@@ -111,14 +111,8 @@ header
     font-size: 20px;
     font-weight: 500;
     line-height: 40px;
-    margin-top: 13vh;
+    margin-top: 11vh;
     margin-left: 15vw;
-    /* padding: 20px;
-    border: solid;
-    border-width: 8px;
-    border-radius: 15px;
-    border-image: linear-gradient(to right, #a251d1, #ea8e8e);
-    border-image-slice: 1; */
 }
 
 #description p
@@ -239,7 +233,7 @@ main h1
 
 #bottom-content
 {
-    height: 70vh;
+    height: 50vh;
     background-color:#983dcd;
     display: flex;
 }

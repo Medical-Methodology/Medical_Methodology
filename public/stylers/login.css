@@ -1,80 +1,91 @@
 *
 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     text-align: center;
 }
 
-#upper-space
+header
 {
-    height: 2vh;
-    background-color: rgb(0, 60, 91);
-}
-
-#lower-space
-{
-    height: 1vh;
-    background: red;
+    padding-bottom: 100px;
 }
 
 #bar
 {
     display: flex;
-    width: 90%;
+    flex-wrap: inherit;
+    justify-content: space-between;
+    width: 100%;
     margin: auto;
     align-items: center;
+    position: fixed;
+    background-image:linear-gradient(90deg, #e48282, #a058c9);
+    list-style: none;
+    box-shadow: 0 -6px 15px 10px rgba(0, 0, 0, 0.5);
 }
 
 #logo
 {
-    flex: 0.6;
-    width: 1vw;
+    width: 8vw;
 }
 
 #title-button
 {
-    flex: 2;
-    font-size: 30px;
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
-nav
+#title-button p
 {
-    flex: 5;
-    height: 3vh;
-}
-
-.nav-links
-{
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    list-style: none;
+    font-size: 35px;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 
 .nav-link
 {
-    flex: 3;
     color: black;
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: 500;
     text-decoration: none;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    text-align: center;
+    padding-right: 3vw;
 }
 
 #selected, .nav-link:hover
 {
     color: white;
-    background: lightseagreen;
-    border: black solid;
+    border: solid;
     border-width: 3px;
     border-radius: 5px;
+    border-image: linear-gradient(to right, #a251d1, #ea8e8e);
+    border-image-slice: 1;
+}
+
+::-webkit-scrollbar 
+{
+    width: 11px;
+}
+
+/* Track */
+::-webkit-scrollbar-track 
+{
+    box-shadow: inset 0 0 4px rgb(32, 28, 28);
+    border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb 
+{
+    background-image: linear-gradient(#7225dd, #b27cd2);
+    border-radius: 100px;
+}
+
+main
+{
+    background-image:linear-gradient(#f2adad, #ba7edc);
+    height: 100vh;
 }
 
 #details
@@ -92,13 +103,14 @@ nav
 {
     font-size: 40px;
     text-decoration: underline;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
 }
 
-#email, #password
+#details #email, #details #password
 {
-    background-color: lightseagreen;
+    background-color:#b17ecf;
     border: black solid;
+    color: white;
     border-width: 2px;
     border-radius: 3px;
     padding-top: 8px;
@@ -106,9 +118,11 @@ nav
     font-size: 18px;
 }
 
-::placeholder
+#details ::placeholder
 {
     color: white;
+    font-weight: 500;
+    font-size: 18px;
 }
 
 #small-gap
@@ -119,6 +133,7 @@ nav
 #login-button
 {
     font-size: 16px;
+    font-weight: 600;
     background-color: red;
     border: black solid;
     border-width: 4px;
@@ -126,4 +141,121 @@ nav
     padding: 15px;
     padding-top: 6px;
     padding-bottom: 6px;
+}
+
+#bottom-content
+{
+    height: 50vh;
+    background-color:#983dcd;
+    display: flex;
+}
+
+#bottom-content #left-gap, #bottom-content #right-gap
+{
+    flex: 2.5;
+}
+
+#left-column, #center-column, #right-column
+{
+    flex: 10;
+}
+
+#bottom-content h1
+{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 50px;
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 55px;
+    padding-bottom: 20px;
+}
+
+#bottom-content p
+{
+    color: white;
+    text-align: left;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+#bottom-content a
+{
+    color: white;
+}
+
+#bottom-content h2
+{
+    color:white;
+    font-size: 35px;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 65px;
+    padding-bottom: 20px;
+}
+
+#left-column, #center-column, #right-column
+{
+    text-align: left;
+}
+
+#left-column a
+{
+    padding-top: 50px;
+}
+
+#center-column
+{
+    margin-left: 10vw;
+}
+
+#center-column ul
+{
+    list-style: none;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#center-column li
+{
+    text-align: left;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+#center-column a
+{
+    text-decoration: none;
+}
+
+#right-column #signup
+{
+    margin-left: -255px;
+}
+
+input
+{
+    border: black solid;
+    border-width: 4px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+::placeholder
+{
+    font-size: 16px;
+    color: black;
+}
+
+#right-column button
+{
+    background-color: #efc4a5;
+    padding: 7px;
+    border: black solid;
+    border-width: 4px;
+    border-radius: 5px;
+    font-weight: 600;
 }

@@ -99,8 +99,8 @@ auth.onAuthStateChanged(user =>
                 `
                     <form action = 'dictionary.html' method = 'POST' id = 'new-term'>
                         <div id = 'term-def'>
-                            <input type = 'text' placeholder = 'Term...' name = 'term' id = 'term'></input>
-                            <input type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition'></input>
+                            <input type = 'text' placeholder = 'Term...' name = 'term' id = 'term' style = 'background: transparent;'></input>
+                            <input type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition' style = 'background: transparent;'></input>
                         </div>
     
                         <div id = 'small-gap'></div>

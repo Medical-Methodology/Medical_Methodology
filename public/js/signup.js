@@ -57,3 +57,11 @@ signUpForm.addEventListener('submit', (e) =>
         signUpError.innerHTML = html;
     })
 });
+
+auth.onAuthStateChanged(user =>
+    {
+        if (user)
+        {
+            location.href = 'user.html';
+        }
+    })

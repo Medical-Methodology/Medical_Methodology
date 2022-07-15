@@ -11,7 +11,11 @@
         <!-- Grabs custom fonts from Google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 
         <!--End-->
         
@@ -23,26 +27,21 @@
 
     <body>
         <header>
-            <div id = 'upper-space'></div>
-                <div id = 'bar'>
-                    <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
-                    <a id = 'title-button' href = '../index.html'>Medical Methodology</a>
-                    <nav>
-                        <ul class = 'nav-links'>
-                            <li><a class = 'nav-link' href = '../index.html'>Home</a></li>
-                            <li><a class = 'nav-link' id = 'selected' href = 'signup.html'>Sign Up</a></li>
-                            <li><a class = 'nav-link' href = 'login.html'>Login</a></li>
-                            <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
-                            <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            <div id = 'lower-space'></div>
+            <div id = 'bar'>
+                <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
+                <a id = 'title-button' href = '../index.html'><p>Medical</p><p>Methodology</p></a>
+                <li><a class = 'nav-link' href = 'login.html'>Login</a></li>
+                <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
+                <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
+                <li><a class = 'nav-link' href = 'contact.html'>Contact Us</a></li>
+                <button id = 'logout-button'>Logout</button>
+            </div>
         </header>
 
-        <br></br>
-
         <main>
+            <br></br>
+            <br></br>
+
             <div id = 'details'>
                 <h1>Sign Up</h1>
 
@@ -68,6 +67,53 @@
                     <button id = 'signup-button'>Sign Up</button>
                 </form>
             </div>
+
+            <div style = 'height: 30vh;'></div>
+
+            <section id = 'bottom-content'>
+                <div id = 'left-gap'></div>
+                
+                <div id = 'left-column'>
+                    <h1>Medical Methodology</h1>
+                    <p>Providing students with the resources to excel.</p>
+                    <p>© Copyright. All Rights Reserved.</p>
+                    <div style = 'padding-top: 6px;'></div>
+                    <a href = 'index.html'>Medical Methodology 2022</a>
+                </div>
+                
+                <div id = 'center-column'>
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href = 'index.html'>Home</a></li>
+                        <li><a href = 'pages/signup.html'>Signup</a></li>
+                        <li><a href = 'pages/login.html'>Login</a></li>
+                        <li><a href = 'pages/dictionary.html'>Dictionary</a></li>
+                        <li><a href = 'pages/about.html'>About Us</a></li>
+                    </ul>
+                </div>
+
+                <div id = 'right-column'>
+                    <h2>Newsletter</h2>
+                    <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
+
+                    <br></br>
+
+                    <div id = 'signup'>        
+                        <form action = 'login.html' method = 'POST' id = 'login-form'>
+                            <input type = 'text' placeholder = 'Email' name = 'email' id = 'email'></input>
+                                                
+                            <!-- Used for injecting HTML when JS detects sign up error -->
+                            <div id = 'error'></div> 
+                            
+                            <div style = 'padding: 10px;'></div>
+        
+                            <button id = 'login-button'>Sign Up</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div id = 'right-gap'></div>
+            </section>
         </main>
 
         <!-- Imports certain Firebase services -->

@@ -51,3 +51,11 @@ loginForm.addEventListener('submit', (e) =>
         errorInsert.innerHTML = html;
     })
 })
+
+auth.onAuthStateChanged(user =>
+{
+    if (user)
+    {
+        location.href = 'user.html';
+    }
+})
