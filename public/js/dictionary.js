@@ -33,7 +33,7 @@ const createList = (data) =>
         // Temporary storage for the document's term
         const td = 
         `
-            <p id = ${counter} style = 'font-size: 19px; font-weight: 400; text-align: left;'><b><u>${term.term}</u></b> - ${term.definition}</p>
+            <p id = ${counter} style = 'font-size: 19px; font-weight: 400; text-align: left; line-height: 40px;'><b><u>${term.term}</u></b> - ${term.definition}</p>
             <div style = 'padding: 10px;'></div>
         `;
 
@@ -86,12 +86,10 @@ auth.onAuthStateChanged(user =>
                 // Stores Admin user data in constant
                 const information = doc.data();
 
-                console.log(information.uid);
                 // Compares logged in user ID with document ID
                 if (user.uid == information.uid)
                 {
                     admin = true;
-                    console.log('true');
                 }
             })
 
@@ -143,10 +141,41 @@ db.collection('terms').orderBy('term', 'asc').onSnapshot(snapshot =>
     let counter = 1;
     let html = 
     `
-        <h1 style = 'font-size: 30px; text-decoration: underline; padding: 5px;''>Terms</h1>
-        <div style = 'display: flex;'>
-            <button onclick = sort("A")>A</button>
+        <!--<h1 style = 'font-size: 30px; text-decoration: underline; padding: 5px;''>Terms</h1>-->
+        <div style = 'display: flex; justify-content: center;'>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("A")>A</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("B")>B</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("C")>C</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("D")>D</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("E")>E</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("F")>F</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("G")>G</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("H")>H</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("I")>I</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("J")>J</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("K")>K</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("L")>L</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("M")>M</button>
         </div>
+
+        <div style = 'padding: 5px;'></div>
+
+        <div style = 'display: flex; justify-content: center;'>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("N")>N</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("O")>O</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("P")>P</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("Q")>Q</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("R")>R</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("S")>S</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("T")>T</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("U")>U</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("V")>V</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("W")>W</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("X")>X</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("Y")>Y</button>
+            <button style = 'font-size: 15px; border: black solid; border-width: 1px; background-color: yellow; padding: 3px; margin-right: 3px;' onclick = sort("Z")>Z</button>
+        </div>
+        <br></br>
     `;
     // Iterates through terms collection
     snapshot.docs.forEach(doc =>
@@ -171,18 +200,22 @@ db.collection('terms').orderBy('term', 'asc').onSnapshot(snapshot =>
 function sort(letter)
 {
     db.collection('terms').onSnapshot(snapshot =>
+    {
+        // Runs data through previously created function
+        let counter = 1;
+        let html = '';
+        snapshot.docs.forEach(doc =>
         {
-            // Runs data through previously created function
-            
-            var documents = '';
-            snapshot.docs.forEach(doc =>
-            {
-                const termD = doc.id;
-                let termE = termD.toString();
-                if (termE.substring(0, 1) === letter)
-                    documents += doc;
-            })
-
-            console.log(documents.get(1));
+            if (doc.id.toString().substring(0, 1) === letter)
+            {    
+                const td = 
+                `
+                    <p id = ${counter} style = 'font-size: 19px; font-weight: 400; text-align: left; line-height: 40px;'><b><u>${doc.data().term}</u></b> - ${doc.data().definition}</p>
+                    <div style = 'padding: 10px;'></div>
+                `;
+                html += td;
+            }
         })
+        terms.innerHTML = html;
+    })
 }
