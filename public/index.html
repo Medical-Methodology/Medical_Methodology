@@ -5,9 +5,14 @@
         <meta charset = "UTF-8" />
         <meta name = "viewport" content = "width=device-width, initial-scale = 1" />
         
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 
         <!--End-->
 
@@ -19,25 +24,39 @@
 
     <body>
         <header>
-            <div id = 'upper-space'></div>
                 <div id = 'bar'>
                     <img src = 'images/logo.png' alt = 'logo' id = 'logo'>
-                    <a id = 'title-button' href = 'index.html'>Medical Methodology</a>
-                    <nav>
-                        <ul class = 'nav-links'>
-                            <li><a class = 'nav-link' id = 'selected' href = 'index.html'>Home</a></li>
-                            <li><a class = 'nav-link' href = 'pages/signup.html'>Sign Up</a></li>
+                    <a id = 'title-button' href = 'index.html'><p>Medical</p><p>Methodology</p></a>
                             <li><a class = 'nav-link' href = 'pages/login.html'>Login</a></li>
                             <li><a class = 'nav-link' href = 'pages/dictionary.html'>Dictionary</a></li>
                             <li><a class = 'nav-link' href = 'pages/about.html'>About Us</a></li>
-                        </ul>
-                    </nav>
+                            <li><a class = 'nav-link' href = 'pages/contact.html'>Contact Us</a></li>
+                            <li><a class = 'nav-link' href = 'pages/signup.html'>Sign Up</a></li>
                 </div>
-            <div id = 'lower-space'></div>
         </header>
 
         <main>
             <section id = 'first-section'>
+                <div id = 'welcome'>
+                    <h1>Welcome to Medical Methodology</h1>
+                
+                    <div class = 'statements'>
+                        <div id = 'description'>
+                            <p>A student driven organization with the goal of developing free and accessibile, college-level content and helping you find your place in the medical field. We believe in simplifying one's approach to the sciences.</p>
+                        
+                            <div id = 'learn-more'>
+                                <img width = '70' height = '70' id = 'moving-arrow' src = 'https://d33wubrfki0l68.cloudfront.net/8c3bff107e4e0d3b58466deaa127bd01f2ac5e9d/8b77a/assets/img/arrow_right.gif' loading = 'lazy'>
+                                <a href = 'pages/about.html'>Learn More</a>
+                            </div>
+
+                        </div>
+
+                        <div id = 'mission'>
+                            <p>Our mission is to simplify scientific content to pique an early interest in the medical sciences.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div id = 'top-info'>
                     <img src = 'images/studying-stock.jpg'>
                     <h1>Learning Awaits</h1>
@@ -79,9 +98,50 @@
 
             <section id = 'bottom-content'>
                 <div id = 'left-gap'></div>
-                <p>We strive to provide free education to all.</p>
-                <p>© 2022 Medical Methodology</p>
-                <div id = 'right gap'></div>
+                
+                <div id = 'left-column'>
+                    <h1>Medical Methodology</h1>
+                    <p>Providing students with the resources to excel.</p>
+                    <p>© Copyright. All Rights Reserved.</p>
+                    <div style = 'padding-top: 6px;'></div>
+                    <a href = '#first-section'>Medical Methodology 2022</a>
+                </div>
+                
+                <div id = 'center-column'>
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href = 'index.html'>Home</a></li>
+                        <li><a href = 'pages/signup.html'>Signup</a></li>
+                        <li><a href = 'pages/login.html'>Login</a></li>
+                        <li><a href = 'pages/dictionary.html'>Dictionary</a></li>
+                        <li><a href = 'pages/about.html'>About Us</a></li>
+                    </ul>
+                </div>
+
+                <div id = 'right-column'>
+                    <h2>Newsletter</h2>
+                    <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
+
+                    <br></br>
+
+                    <div id = 'details'>        
+                        <form action = 'login.html' method = 'POST' id = 'login-form'>
+                            <input type = 'text' placeholder = 'Email' name = 'email' id = 'email'></input>
+                            
+                            <br></br>
+                            <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
+                                                
+                            <!-- Used for injecting HTML when JS detects sign up error -->
+                            <div id = 'error'></div> 
+                            
+                            <div style = 'padding: 10px;'></div>
+        
+                            <button id = 'login-button'>Sign Up</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div id = 'right-gap'></div>
             </section>
         </main>
 

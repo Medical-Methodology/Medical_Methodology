@@ -77,12 +77,6 @@ nav
     border-radius: 5px;
 }
 
-#glossary
-{
-    width: 80%;
-    margin: auto;
-}
-
 #glossary h1
 {
     font-size: 40px;
@@ -123,4 +117,27 @@ nav
 {
     font-size: 18px;
     color: black;
+}
+
+#main-content
+{
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+#list
+{
+    flex: 0.5;
+    border: black solid;
+    border-width: 4px;
+    border-radius: 5px;
+    height: 40vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#terms
+{
+    flex: 2;
 }

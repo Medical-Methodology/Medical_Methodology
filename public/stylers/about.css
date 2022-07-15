@@ -76,3 +76,51 @@ nav
     border-width: 3px;
     border-radius: 5px;
 }
+
+main h1
+{
+    font-size: 50px;
+    text-decoration: underline;
+    padding: 20px;
+}
+
+#first-row, #second-row
+{
+    display: flex;
+}
+
+#left-gap, #right-gap
+{
+    flex: 1;
+}
+
+#inbetween
+{
+    flex: 0.5;
+}
+
+#siddarth, #pranav, #praveen, #hannah
+{
+    flex: 2;
+}
+
+main img
+{
+    border: black solid;
+    border-width: 8px;
+    border-radius: 8px;
+    width: 25vw;
+}
+
+main h2
+{
+    font-size: 30px;
+    text-decoration: underline;
+    padding: 10px;
+}
+
+main p
+{
+    font-size: 18px;
+    line-height: 30px;
+}

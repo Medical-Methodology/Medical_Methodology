@@ -2,10 +2,26 @@
 const terms = document.querySelector('#terms');
 const logout = document.querySelector('#logout-button');
 const createTerm = document.querySelector('#create');
+const listTerms = document.querySelector('#list');
+
+// Checks if user is authenticated
+auth.onAuthStateChanged((user) =>
+{ 
+    if (user)
+    {
+        fetchData('term', 'asc');
+    }
+    else
+    {
+        // Redirects user if not logged in
+        location.href = 'login.html';
+    }
+})
 
 // Defines function for going through collection
 const createList = (data) =>
 {
+    let counter = 1;
     let html = '';
 
     // For each loop to cycle through the documents in the Collection
@@ -17,12 +33,13 @@ const createList = (data) =>
         // Temporary storage for the document's term
         const td = 
         `
-            <p style = 'font-size: 19px; font-weight: 400; text-align: left;'><b><u>${term.term}</u></b> - ${term.definition}</p>
+            <p id = ${counter} style = 'font-size: 19px; font-weight: 400; text-align: left;'><b><u>${term.term}</u></b> - ${term.definition}</p>
             <div style = 'padding: 10px;'></div>
         `;
 
         // Aggregates terms into single reference
         html += td;
+        counter += 1;
     })
 
     // Injects HTML
@@ -30,22 +47,14 @@ const createList = (data) =>
 }
 
 // Refeshes data every time collection changes
-auth.onAuthStateChanged(user =>
+function fetchData(term, sort)
 {
-    if (user)
+    db.collection('terms').orderBy(term, sort).onSnapshot(snapshot =>
     {
-        db.collection('terms').orderBy('term', 'asc').onSnapshot(snapshot =>
-        {
-            // Runs data through previously created function
-            createList(snapshot.docs);
-        })
-    }
-    else
-    {
-        // Redirects user if not logged in
-        location.href = '../index.html';
-    }
-})
+        // Runs data through previously created function
+        createList(snapshot.docs);
+    })
+}
 
 // Adds listener for when button is clicked
 logout.addEventListener('click', (e) =>
@@ -61,7 +70,7 @@ logout.addEventListener('click', (e) =>
     })
 });
 
-
+// Determines whether or not to display add term feature
 auth.onAuthStateChanged(user =>
 {
     if (user)
@@ -107,12 +116,10 @@ auth.onAuthStateChanged(user =>
                 createTerm.innerHTML = html;
             }
         })   
-        
-        console.log(admin);
-        
     }
 })
 
+// Submits term and definition to database
 createTerm.addEventListener('submit', (e) =>
 {
     // Prevents default action
@@ -129,3 +136,53 @@ createTerm.addEventListener('submit', (e) =>
             definition : definition
     })
 })
+
+// Creates list of terms
+db.collection('terms').orderBy('term', 'asc').onSnapshot(snapshot =>
+{
+    let counter = 1;
+    let html = 
+    `
+        <h1 style = 'font-size: 30px; text-decoration: underline; padding: 5px;''>Terms</h1>
+        <div style = 'display: flex;'>
+            <button onclick = sort("A")>A</button>
+        </div>
+    `;
+    // Iterates through terms collection
+    snapshot.docs.forEach(doc =>
+    {
+        // Stores Admin user data in constant
+        const information = doc.data();
+
+        const td = 
+        `
+            <a 
+            style = 'color: black; font-size: 18px;' href = '#${counter}'>${information.term}</a>
+            <div style = 'padding: 5px;'></div>
+        `;
+
+        html += td;
+        counter += 1;
+    })
+
+    listTerms.innerHTML = html;
+})
+
+function sort(letter)
+{
+    db.collection('terms').onSnapshot(snapshot =>
+        {
+            // Runs data through previously created function
+            
+            var documents = '';
+            snapshot.docs.forEach(doc =>
+            {
+                const termD = doc.id;
+                let termE = termD.toString();
+                if (termE.substring(0, 1) === letter)
+                    documents += doc;
+            })
+
+            console.log(documents.get(1));
+        })
+}
