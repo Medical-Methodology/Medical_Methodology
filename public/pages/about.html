@@ -17,16 +17,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 
-        <!--End-->
+        <!--Boilerplate End-->
         
         <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/about.css" />
         
+        <!-- Name of tab in browser -->
         <title>About Us</title>
     </head>
 
     <body>
         <header>
+            <!-- Navigation bar -->
             <div id = 'bar'>
                 <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
                 <a id = 'title-button' href = '../index.html'><p>Medical</p><p>Methodology</p></a>
@@ -42,9 +44,12 @@
             
             <br></br>
 
+            <!-- First row of members (Siddarth and Pranav) -->
             <section id = 'first-row'>
+                <!-- Left spacer from edge -->
                 <div id = 'left-gap'></div>
 
+                <!-- Siddarth -->
                 <div id = 'siddarth'>
                     <img src = '../images/siddarth.png' alt = 'Siddarth Bahl'>
                     <div id = 'small-gap'></div>
@@ -52,8 +57,10 @@
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
 
+                <!-- Spacer -->
                 <div id = 'inbetween'></div>
 
+                <!-- Pranav -->
                 <div id = 'pranav'>
                     <img src = '../images/pranav.jpg' alt = 'Pranav Tigura'>
                     <div id = 'small-gap'></div>
@@ -61,13 +68,18 @@
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
 
+                <!-- Right spacer from edge -->
                 <div id = 'right-gap'></div>
             </section>
 
             <br></br>
 
+            <!-- Second row of members (Praveen and Hannah) -->
             <section id = 'second-row'>
+                <!-- Left spacer from edge -->
                 <div id = 'left-gap'></div>
+
+                <!-- Praveen -->
                 <div id = 'praveen'>
                     <img src = '../images/praveen.jpg' alt = 'Praveen Perera'>
                     <div id = 'small-gap'></div>
@@ -75,8 +87,10 @@
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
 
+                <!-- Spacer -->
                 <div id = 'inbetween'></div>
 
+                <!-- Hannah -->
                 <div id = 'hannah'>
                     <img src = '../images/hannah.jpg' alt = 'Hannah Rajan'>
                     <div id = 'small-gap'></div>
@@ -84,15 +98,19 @@
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
 
+                <!-- Right spacer from edge -->
                 <div id = 'right-gap'></div>
             </section>
 
             <br></br>
             <br></br>
 
+            <!-- Footer with details -->
             <section id = 'bottom-content'>
+                <!-- Left spacer -->
                 <div id = 'left-gap'></div>
                 
+                <!-- Copyright -->
                 <div id = 'left-column'>
                     <h1>Medical Methodology</h1>
                     <p>Providing students with the resources to excel.</p>
@@ -101,6 +119,7 @@
                     <a href = 'index.html'>Medical Methodology 2022</a>
                 </div>
                 
+                <!-- Quick Access Links -->
                 <div id = 'center-column'>
                     <h2>Quick Links</h2>
                     <ul>
@@ -112,12 +131,14 @@
                     </ul>
                 </div>
 
+                <!-- Newsletter -->
                 <div id = 'right-column'>
                     <h2>Newsletter</h2>
                     <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
 
                     <br></br>
 
+                    <!-- Signup form -->
                     <div id = 'signup'>        
                         <form action = 'login.html' method = 'POST' id = 'login-form'>
                             <input type = 'text' placeholder = 'Email' name = 'email' id = 'email'></input>
@@ -130,11 +151,13 @@
                             <button id = 'login-button'>Sign Up</button>
                         </form>
                     </div>
-
                 </div>
+
+                <!-- Right spacer -->
                 <div id = 'right-gap'></div>
             </section>
         </main>
+
         <!-- Imports certain Firebase services -->
         <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
         <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
@@ -159,7 +182,6 @@
             const db = firebase.firestore();
     
             db.settings({timestampsInSnapshots : true});
-        </script>
-
+        </script>   
     </body>
 </html>

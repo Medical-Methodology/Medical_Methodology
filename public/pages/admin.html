@@ -8,34 +8,37 @@
         <!-- Icon used for in tabs -->
         <link rel="shortcut icon" type="image/png" href= "../images/logo.png">
         
+        <!-- Grabs custom fonts from Google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 
         <!--End-->
 
         <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/admin.css" />
 
+        <!-- Name of tab in browser -->
         <title>Admin</title>
     </head>
 
     <body>
+        <!-- Navigation Bar -->
         <header>
-            <div id = 'upper-space'></div>
-                <div id = 'bar'>
-                    <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
-                    <a id = 'title-button' href = '../index.html'>Medical Methodology</a>
-                    <nav>
-                        <ul class = 'nav-links'>
-                            <li><a class = 'nav-link' href = '../index.html'>Home</a></li>
-                            <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
-                            <li><a class = 'nav-link' href = 'create_content.html'>Create</a></li>
-                            <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            <div id = 'lower-space'></div>
+            <div id = 'bar'>
+                <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
+                <a id = 'title-button' href = '../index.html'><p>Medical</p><p>Methodology</p></a>
+                <div id = 'loginButton'><li><a class = 'nav-link' href = 'login.html'>Login</a></li></div>
+                <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
+                <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
+                <li><a class = 'nav-link' href = 'contact.html'>Contact Us</a></li>
+                <div id = 'signupButton'><li><a class = 'nav-link' href = 'signup.html'>Sign Up</a></li></div>
+                <!-- <button id = 'logout-button'>Logout</button> -->
+            </div>
         </header>
 
         <main>
