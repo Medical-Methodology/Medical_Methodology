@@ -154,6 +154,7 @@ header
 
 #learn-more a
 {
+    min-width: fit-content;
     margin-right: 150px;
     flex: 2;
     color: #45066a;
