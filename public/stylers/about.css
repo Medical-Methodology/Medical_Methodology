@@ -68,7 +68,7 @@ main
     background-image:linear-gradient(#e48282, #a058c9);
 }
 
-main h1
+#founders
 {
     background: #f2bb06;
     border-bottom: black solid;
@@ -117,4 +117,121 @@ main p
 {
     font-size: 18px;
     line-height: 30px;
+}
+
+#bottom-content
+{
+    height: 50vh;
+    background-color:#983dcd;
+    display: flex;
+}
+
+#bottom-content #left-gap, #bottom-content #right-gap
+{
+    flex: 2.5;
+}
+
+#left-column, #center-column, #right-column
+{
+    flex: 10;
+}
+
+#bottom-content h1
+{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 50px;
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 55px;
+    padding-bottom: 20px;
+}
+
+#bottom-content p
+{
+    color: white;
+    text-align: left;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+#bottom-content a
+{
+    color: white;
+}
+
+#bottom-content h2
+{
+    color:white;
+    font-size: 35px;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 65px;
+    padding-bottom: 20px;
+}
+
+#left-column, #center-column, #right-column
+{
+    text-align: left;
+}
+
+#left-column a
+{
+    padding-top: 50px;
+}
+
+#center-column
+{
+    margin-left: 10vw;
+}
+
+#center-column ul
+{
+    list-style: none;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#center-column li
+{
+    text-align: left;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+#center-column a
+{
+    text-decoration: none;
+}
+
+#right-column #signup
+{
+    margin-left: -255px;
+}
+
+input
+{
+    border: black solid;
+    border-width: 4px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+::placeholder
+{
+    font-size: 16px;
+    color: black;
+}
+
+#right-column button
+{
+    background-color: #efc4a5;
+    padding: 7px;
+    border: black solid;
+    border-width: 4px;
+    border-radius: 5px;
+    font-weight: 600;
 }
