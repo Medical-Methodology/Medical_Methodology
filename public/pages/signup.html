@@ -17,15 +17,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 
-        <!--End-->
+        <!--Boilerplate End-->
         
         <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/signup.css" />
 
+        <!-- Name of tab in browser -->
         <title>Sign Up</title>
     </head>
 
     <body>
+        <!-- Navigation bar -->
         <header>
             <div id = 'bar'>
                 <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
@@ -41,37 +43,49 @@
             <br></br>
             <br></br>
 
+            <!-- Signup form -->
             <div id = 'details'>
                 <h1>Sign Up</h1>
 
                 <form action = 'signup.html' method = 'POST' id = 'signup-form'>
+                    <!-- First name entry -->
                     <input type = 'text' placeholder = 'First Name...' name = 'first-name' id = 'first-name'></input>
                     <br></br>
                     
+                    <!-- Last name entry -->
                     <input type = 'text' placeholder = 'Last Name...' name = 'last-name' id = 'last-name'></input>
                     <br></br>
 
+                    <!-- Email entry -->
                     <input type = 'text' placeholder = 'Email...' name = 'email' id = 'email'></input>
 
                     <div id = 'error-gap'></div>
                     <!-- Used for injecting HTML when JS detects sign up error -->
                     <div id = 'error'></div> 
 
+                    <!-- Password entry -->
                     <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
                     
+                    <!-- Password warning -->
                     <p id = 'password-limit'>**Password must be more than 6 characters.</p>
 
+                    <!-- Spacer -->
                     <p id = 'small-gap'></p>
 
+                    <!-- Submit button -->
                     <button id = 'signup-button'>Sign Up</button>
                 </form>
             </div>
 
+            <!-- Spacer between top and bottom content -->
             <div style = 'height: 30vh;'></div>
 
+            <!-- Page footer -->
             <section id = 'bottom-content'>
+                <!-- Left spacer -->
                 <div id = 'left-gap'></div>
                 
+                <!-- Copyright information -->
                 <div id = 'left-column'>
                     <h1>Medical Methodology</h1>
                     <p>Providing students with the resources to excel.</p>
@@ -80,6 +94,7 @@
                     <a href = 'index.html'>Medical Methodology 2022</a>
                 </div>
                 
+                <!-- Quick access links -->
                 <div id = 'center-column'>
                     <h2>Quick Links</h2>
                     <ul>
@@ -91,6 +106,7 @@
                     </ul>
                 </div>
 
+                <!-- Newsletter signup -->
                 <div id = 'right-column'>
                     <h2>Newsletter</h2>
                     <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
@@ -99,6 +115,7 @@
 
                     <div id = 'signup'>        
                         <form action = 'login.html' method = 'POST' id = 'login-form'>
+                            <!-- Email entry -->
                             <input type = 'text' placeholder = 'Email' name = 'email' id = 'email'></input>
                                                 
                             <!-- Used for injecting HTML when JS detects sign up error -->
@@ -106,7 +123,8 @@
                             
                             <div style = 'padding: 10px;'></div>
         
-                            <button id = 'login-button'>Sign Up</button>
+                            <!-- Submit button -->
+                            <button id = 'submit-button'>Sign Up</button>
                         </form>
                     </div>
 

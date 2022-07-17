@@ -17,15 +17,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 
-        <!--End-->
+        <!--Boilerplate End-->
 
         <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/login.css" />
 
+        <!-- Name of tab in browser -->
         <title>Login</title>
     </head>
 
     <body>
+        <!-- Navigation bar -->
         <header>
             <div id = 'bar'>
                 <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
@@ -41,30 +43,38 @@
             <br></br>
             <br></br>
             
+            <!-- Login form -->
             <div id = 'details'>
                 <h1>Login</h1>
 
                 <form action = 'login.html' method = 'POST' id = 'login-form'>
+                    <!-- Email entry -->
                     <input type = 'text' placeholder = 'Email...' name = 'email' id = 'email'></input>
                     <br></br>
+                    
+                    <!-- Password entry -->
                     <input type = 'password' placeholder = 'Password' name = 'password' id = 'password'></input>
                                         
                     
                     <!-- Used for injecting HTML when JS detects sign up error -->
                     <div id = 'error'></div> 
 
-                    
                     <p id = 'small-gap'></p>
 
+                    <!-- Submit button -->
                     <button id = 'login-button'>Login</button>
                 </form>
             </div>
 
+            <!-- Spacer between top and bottom content -->
             <div style = 'height: 45vh;'></div>
 
+            <!-- Page footer -->
             <section id = 'bottom-content'>
+                <!-- Left spacer -->
                 <div id = 'left-gap'></div>
                 
+                <!-- Copyright information -->
                 <div id = 'left-column'>
                     <h1>Medical Methodology</h1>
                     <p>Providing students with the resources to excel.</p>
@@ -73,6 +83,7 @@
                     <a href = 'index.html'>Medical Methodology 2022</a>
                 </div>
                 
+                <!-- Quick access links -->
                 <div id = 'center-column'>
                     <h2>Quick Links</h2>
                     <ul>
@@ -84,6 +95,7 @@
                     </ul>
                 </div>
 
+                <!-- Newsletter signup -->
                 <div id = 'right-column'>
                     <h2>Newsletter</h2>
                     <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
@@ -99,11 +111,13 @@
                             
                             <div style = 'padding: 10px;'></div>
         
-                            <button id = 'login-button'>Sign Up</button>
+                            <!-- Submit button -->
+                            <button id = 'submit-button'>Sign Up</button>
                         </form>
                     </div>
-
                 </div>
+
+                <!-- Right spacer -->
                 <div id = 'right-gap'></div>
             </section>
         </main>
