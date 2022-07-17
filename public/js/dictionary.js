@@ -57,7 +57,6 @@ var searchTools =
     <form action = 'dictionary.html' method = 'POST' id = 'search-bar' style = 'padding-bottom: 15px;'>
         <input type = 'text' name = 'search' id = 'search' style = 
         '
-            <!-- Element styling -->
             font-size: 18px;
             border: black solid;
             border-width: 3px;
@@ -80,6 +79,7 @@ auth.onAuthStateChanged((user) =>
     {
         // Sorts data alphabetically by term in ascending order
         fetchData('term', 'asc');
+        shortList('term', 'asc');
     }
     // If user is not logged in
     else
@@ -128,10 +128,10 @@ const createList = (data) =>
 }
 
 // Refeshes data every time collection changes
-function fetchData(term, sort)
+function fetchData(sortBy, order)
 {
     // Sorts data depending on function arguments
-    db.collection('terms').orderBy(term, sort).onSnapshot(snapshot =>
+    db.collection('terms').orderBy(sortBy, order).onSnapshot(snapshot =>
     {
         // Runs data through previously created function
         createList(snapshot.docs);
@@ -156,8 +156,6 @@ auth.onAuthStateChanged(user =>
         `
             <!-- Logout button -->
             <button style = 
-
-            <!-- Element styling -->
             '
             margin-right: 4vw;
             background: transparent;
@@ -175,7 +173,7 @@ auth.onAuthStateChanged(user =>
         // Var storing if user is admin or standard
         var admin = false;
 
-        // Checks if user is Admin
+        // Retrieves data from 'Admin' collection
         db.collection('admin').get().then(snapshot =>
         {
             // Iterates through Admin collection
@@ -255,88 +253,91 @@ createTerm.addEventListener('submit', (e) =>
 })
 
 // Creates list of terms
-db.collection('terms').orderBy('term', 'asc').onSnapshot(snapshot =>
+function shortList(sortBy, order)
 {
-    // Counter to provide elements with unique IDs
-    let counter = 1;
-    // Sets injectable HTML to previously defined variable containing HTML for the filter-by-letter buttons
-    let html = searchTools;
-
-    // Iterates through collection
-    snapshot.docs.forEach(doc =>
+    db.collection('terms').orderBy('term', 'asc').onSnapshot(snapshot =>
     {
-        // Stores document data in cosntant
-        const information = doc.data();
+        // Counter to provide elements with unique IDs
+        let counter = 1;
+        // Sets injectable HTML to previously defined variable containing HTML for the filter-by-letter buttons
+        let html = searchTools;
 
-        // Creates injectable HTML
-        const td = 
-        `
-            <a 
-            <!-- Link to actual term within search and filter box -->
-            style = 'color: black; font-size: 18px; font-weight: 500;' href = '#${counter}'>${information.term}</a>
-            <!-- Spacer -->
-            <div style = 'padding: 10px;'></div>
-        `;
-
-        // Aggregates HTML
-        html += td;
-        // Increments counter
-        counter += 1;
-    })
-
-    // Closes previously opened HTML
-    html += `</div>`;
-    // Injects HTML
-    listTerms.innerHTML = html;
-
-    // Creates constants linked to HTML elements
-    const replaceTerms = document.querySelector('#listOfTerms');
-    const searchTerm = document.querySelector('#search-bar');
-
-    // Listens to when something is searched in search bar
-    searchTerm.addEventListener('submit', (e) =>
-    {
-        // Prevents default action
-        e.preventDefault();
-            
-        // Contains user-entered value from search bar
-        const search = searchTerm['search'].value;
-
-        // Retrieves data from 'terms' collection
-        db.collection('terms').get().then(snapshot =>
+        // Iterates through collection
+        snapshot.docs.forEach(doc =>
         {
-            // Creates counter
-            let counter = 1;
-            // Creates injectable HTML
-            let html = '';
-            // Iterates through 'terms' collection
-            snapshot.docs.forEach(doc =>
-            {
-                // Stores document data in constant
-                const information = doc.data();
+            // Stores document data in cosntant
+            const information = doc.data();
 
-                // Condition statement checking if user-searched term matches current document term
-                if (information.term.toString().toLowerCase().includes(search.toString().toLowerCase()))
+            // Creates injectable HTML
+            const td = 
+            `
+                <!-- Link to actual term within search and filter box -->
+                <a 
+                style = 'color: black; font-size: 18px; font-weight: 500;' href = '#${counter}'>${information.term}</a>
+                <!-- Spacer -->
+                <div style = 'padding: 10px;'></div>
+            `;
+
+            // Aggregates HTML
+            html += td;
+            // Increments counter
+            counter += 1;
+        })
+
+        // Closes previously opened HTML
+        html += `</div>`;
+        // Injects HTML
+        listTerms.innerHTML = html;
+
+        // Creates constants linked to HTML elements
+        const replaceTerms = document.querySelector('#listOfTerms');
+        const searchTerm = document.querySelector('#search-bar');
+
+        // Listens to when something is searched in search bar
+        searchTerm.addEventListener('submit', (e) =>
+        {
+            // Prevents default action
+            e.preventDefault();
+                
+            // Contains user-entered value from search bar
+            const search = searchTerm['search'].value;
+
+            // Retrieves data from 'terms' collection
+            db.collection('terms').get().then(snapshot =>
+            {
+                // Creates counter
+                let counter = 1;
+                // Creates injectable HTML
+                let html = '';
+                // Iterates through 'terms' collection
+                snapshot.docs.forEach(doc =>
                 {
-                    // If so, creates injectable HTML containing link to full definition within the Dictionary page for that word
-                    const td =
-                    `
-                        <a 
-                        style = 'color: black; font-size: 18px; font-weight: 500;' href = '#${counter}'>${information.term}</a>
-                        <div style = 'padding: 10px;'></div>
-                    `;
-            
-                    // Aggregates HTML
-                    html += td;
-                }
-                // Increments counter
-                counter += 1;
+                    // Stores document data in constant
+                    const information = doc.data();
+
+                    // Condition statement checking if user-searched term matches current document term
+                    if (information.term.toString().toLowerCase().includes(search.toString().toLowerCase()))
+                    {
+                        // If so, creates injectable HTML containing link to full definition within the Dictionary page for that word
+                        const td =
+                        `
+                            <a 
+                            style = 'color: black; font-size: 18px; font-weight: 500;' href = '#${counter}'>${information.term}</a>
+                            <div style = 'padding: 10px;'></div>
+                        `;
+                
+                        // Aggregates HTML
+                        html += td;
+                    }
+                    // Increments counter
+                    counter += 1;
+                })
+                // Injects HTML
+                replaceTerms.innerHTML = html;
             })
-            // Injects HTML
-            replaceTerms.innerHTML = html;
         })
     })
-})
+}
 
 // Creates function for filtering terms when letter-button is pressed
 function sort(letter)
@@ -344,7 +345,8 @@ function sort(letter)
     // For Reset button, resets all filters
     if (letter === 'reset')
     {
-
+        fetchData('term', 'asc');
+        shortList('term', 'asc');
     }
     // If reset button wasn't pressed...
     else
