@@ -29,6 +29,7 @@ signUpForm.addEventListener('submit', (e) =>
         // Delay to allow DB to store data before redirect
         setTimeout(function() 
         {
+            // Redirects user
             location.href = "admin.html";
         }, 
         1000
@@ -41,7 +42,7 @@ signUpForm.addEventListener('submit', (e) =>
         let html =
         `
             <p style = 
-            
+            <!-- Element styling -->
             'background-color: red;
             width: fit-content;
             padding: 10px;

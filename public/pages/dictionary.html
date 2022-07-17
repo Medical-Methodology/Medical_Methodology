@@ -17,15 +17,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
         
-        <!--End-->
+        <!--Boilerplate End-->
 
         <!-- Links to CSS file -->
         <link rel = "stylesheet" href = "../stylers/dictionary.css" />
 
+        <!-- Name of tab in browser -->
         <title>Dictionary</title>
     </head>
 
     <body>
+        <!-- Navigation bar -->
         <header>
             <div id = 'bar'>
                 <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
@@ -34,15 +36,21 @@
                 <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
                 <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
                 <li><a class = 'nav-link' href = 'contact.html'>Contact Us</a></li>
+
+                <!-- Variable button dependent on user login status, default to signup -->
                 <div id = 'signupButton'><li><a class = 'nav-link' href = 'signup.html'>Sign Up</a></li></div>
-                <!-- <button id = 'logout-button'>Logout</button> -->
             </div>
         </header>
 
         <main>
             <section id = 'glossary'>
+                <!-- Page header -->
                 <h1>Dictionary</h1>
+
+                <!-- Div containing injectable HTML for Admins to make new terms -->
                 <div id = 'create'></div>
+
+                <!-- Main content where list of terms and search/filter is located -->
                 <div id = 'main-content'>
                     <div id = 'list'></div>
                     <div style = 'flex: 0.1;'></div>
@@ -50,10 +58,12 @@
                 </div>
             </section>
 
-
+            <!-- Page footer -->
             <section id = 'bottom-content'>
+                <!-- Left spacer -->
                 <div id = 'left-gap'></div>
                 
+                <!-- Copyright information -->
                 <div id = 'left-column'>
                     <h1>Medical Methodology</h1>
                     <p>Providing students with the resources to excel.</p>
@@ -62,6 +72,7 @@
                     <a href = 'index.html'>Medical Methodology 2022</a>
                 </div>
                 
+                <!-- Quick access links -->
                 <div id = 'center-column'>
                     <h2>Quick Links</h2>
                     <ul>
@@ -73,6 +84,7 @@
                     </ul>
                 </div>
 
+                <!-- Newsletter signup -->
                 <div id = 'right-column'>
                     <h2>Newsletter</h2>
                     <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
@@ -88,11 +100,12 @@
                             
                             <div style = 'padding: 10px;'></div>
         
-                            <button id = 'login-button'>Sign Up</button>
+                            <!-- Submit button -->
+                            <button id = 'submit-button'>Sign Up</button>
                         </form>
                     </div>
-
                 </div>
+                <!-- Right spacer -->
                 <div id = 'right-gap'></div>
             </section>
         </main>
