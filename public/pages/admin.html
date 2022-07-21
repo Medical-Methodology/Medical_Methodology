@@ -40,8 +40,57 @@
         </header>
 
         <main>
-
         </main>
+            <!-- Page footer -->
+            <section id = 'bottom-content'>
+                <!-- Left spacer -->
+                <div id = 'left-gap'></div>
+                
+                <!-- Copyright information -->
+                <div id = 'left-column'>
+                    <h1>Medical Methodology</h1>
+                    <p>Providing students with the resources to excel.</p>
+                    <p>© Copyright. All Rights Reserved.</p>
+                    <div style = 'padding-top: 6px;'></div>
+                    <a href = 'index.html'>Medical Methodology 2022</a>
+                </div>
+                
+                <!-- Quick access links -->
+                <div id = 'center-column'>
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href = 'index.html'>Home</a></li>
+                        <li><a href = 'pages/signup.html'>Signup</a></li>
+                        <li><a href = 'pages/login.html'>Login</a></li>
+                        <li><a href = 'pages/dictionary.html'>Dictionary</a></li>
+                        <li><a href = 'pages/about.html'>About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter signup -->
+                <div id = 'right-column'>
+                    <h2>Newsletter</h2>
+                    <p>Subscribe so you don't miss out on the latest medical findings and advancements!</p>
+
+                    <br></br>
+
+                    <div id = 'signup'>        
+                        <form action = 'login.html' method = 'POST' id = 'login-form'>
+                            <input type = 'text' placeholder = 'Email' name = 'email' id = 'email'></input>
+                                                
+                            <!-- Used for injecting HTML when JS detects sign up error -->
+                            <div id = 'error'></div> 
+                            
+                            <div style = 'padding: 10px;'></div>
+
+                            <!-- Submit button -->
+                            <button id = 'submit-button'>Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Right spacer -->
+                <div id = 'right-gap'></div>
+            </section>
 
         <!-- Imports certain Firebase services -->
         <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>

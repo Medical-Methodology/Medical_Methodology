@@ -108,3 +108,12 @@ main
     border-image: linear-gradient(to bottom, #bb60ef, #f73c3c);
     border-image-slice: 1;
 }
+
+#logout-button
+{
+    margin-right: 4vw;
+    background: transparent;
+    border: transparent;
+    font-size: 22px;
+    font-weight: 500;
+}
