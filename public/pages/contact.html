@@ -32,17 +32,36 @@
             <div id = 'bar'>
                 <img src = '../images/logo.png' alt = 'logo' id = 'logo'>
                 <a id = 'title-button' href = '../index.html'><p>Medical</p><p>Methodology</p></a>
-                <div id = 'loginButton'><li><a class = 'nav-link' href = 'login.html'>Login</a></li></div>
-                <li><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></li>
+                <div id = 'login-button'><a class = 'nav-link' href = 'login.html'>Login</a></div>
+                <div id = 'dictionary'><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></div>
                 <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
-                <li><a class = 'nav-link' href = 'contact.html'>Contact Us</a></li>
-                <div id = 'signupButton'><li><a class = 'nav-link' href = 'signup.html'>Sign Up</a></li></div>
-                <!-- <button id = 'logout-button'>Logout</button> -->
+                <div id = 'signup-button'><a class = 'nav-link' href = 'signup.html'>Sign Up</a></div>
             </div>
         </header>
         
         <main>
+            <section>
+                <h1 id = 'title'>Contact</h1>
+                <div id = 'addresses'>
+                    <div id = 'support'>
+                        <h1>Support</h1>
+                        <p>For support, please contact:</p>
+                        <p class = 'email'>medical.methodology-support@gmail.com</p>
+                    </div>
+                    <div id = 'questions'>
+                        <h1>Questions</h1>
+                        <p>For general questions, please contact:</p>
+                        <p class = 'email'>medical.methodology-questions@gmail.com</p>
+                    </div>
+                    <div id = 'team'>
+                        <h1>Team</h1>
+                        <p>Want to join the team? Please contact:</p>
+                        <p class = 'email'>medical.methodology@gmail.com</p>
+                    </div>
+                </div>
+            </section>
         </main>
+        
             <!-- Page footer -->
             <section id = 'bottom-content'>
                 <!-- Left spacer -->
@@ -93,5 +112,33 @@
                 <!-- Right spacer -->
                 <div id = 'right-gap'></div>
             </section>
+
+            <!-- Imports certain Firebase services -->
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+        <!-- Firebase configuration to link up to project on backend -->
+        <script>
+            var config = 
+            {
+                apiKey: "AIzaSyAO9fiKvzaBHcRE7USzWk_PKLZK59d1jho",
+                authDomain: "medical-methodology.firebaseapp.com",
+                projectId: "medical-methodology",
+                storageBucket: "medical-methodology.appspot.com",
+                messagingSenderId: "261830586183",
+                appId: "1:261830586183:web:3f2f805aa432d2fa1c2662",
+                measurementId: "G-237XPXZER0"
+            };
+            
+            firebase.initializeApp(config);
+    
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+    
+            db.settings({timestampsInSnapshots : true});
+        </script>
+
+        <script src = '../js/contact.js'></script>
     </body>
 </html>

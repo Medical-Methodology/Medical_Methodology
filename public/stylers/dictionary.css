@@ -35,6 +35,7 @@ header
 {
     color: white;
     text-decoration: none;
+    margin-left: -3vw;
 }
 
 #title-button p
@@ -95,7 +96,7 @@ main
 #glossary h1
 {
     font-size: 50px;
-    padding-top: 60px;
+    padding-top: 5vh;
     padding-bottom: 30px;
 }
 
@@ -275,4 +276,13 @@ input
     border-width: 4px;
     border-radius: 5px;
     font-weight: 600;
+}
+
+#logout-button
+{
+    margin-right: 6vw;
+    background: transparent;
+    border: transparent;
+    font-size: 22px;
+    font-weight: 500;
 }

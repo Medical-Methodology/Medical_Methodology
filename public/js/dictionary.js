@@ -2,8 +2,7 @@
 const terms = document.querySelector('#terms');
 const createTerm = document.querySelector('#create');
 const listTerms = document.querySelector('#list');
-const loginButton = document.querySelector('#loginButton');
-const signupButton = document.querySelector('#signupButton');
+const logout = document.querySelector('#logout-button');
 
 // Injectable HTML for filter-by-letter buttons
 var searchTools =
@@ -144,32 +143,6 @@ auth.onAuthStateChanged(user =>
     // If user is logged in
     if (user)
     {
-        // Creates blank injectable HTML
-        let html = '';
-        // Esentially removes the Login button from the page, div element remains, though with dimensions of 0 
-        loginButton.innerHTML = html;
-        // Creates more leftward space for icons to the right of where the login button used to be
-        loginButton.style.margin = '-50px';
-
-        // Creates HTML to inject
-        html =
-        `
-            <!-- Logout button -->
-            <button style = 
-            '
-            margin-right: 4vw;
-            background: transparent;
-            border: transparent;
-            font-size: 22px;
-            font-weight: 500;
-            ' id = 'logout-button'>Logout</button>
-        `;
-        // Injects HTML
-        signupButton.innerHTML = html;
-
-        // Creates new constant to link to HTML element
-        const logout = document.querySelector('#logout-button');
-
         // Var storing if user is admin or standard
         var admin = false;
 
@@ -393,6 +366,9 @@ function sort(letter)
             })
             // Closes previously opened div
             listHtml += `</div>`;
+
+           termsHtml += `<div style = 'padding-bottom: 10%;'></div>`;
+
 
             // Injects HTML
             terms.innerHTML = termsHtml;
