@@ -448,3 +448,23 @@ function sort(letter)
         })
     }
 }
+
+function moreInfo(word)
+{
+    db.collection('terms').get().then(snapshot =>
+        {
+            // Iterates through documents in collection
+            snapshot.docs.forEach(doc =>
+            {
+                // Stores document data
+                const information = doc.data();
+                if (information.term === word)
+                {
+                    let html =
+                    `
+                        <div class = 'popup
+                    `;
+                }
+        })
+    })
+}
