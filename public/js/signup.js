@@ -21,6 +21,15 @@ signUpForm.addEventListener('submit', (e) =>
             name : signUpForm['first-name'].value + ' ' + signUpForm['last-name'].value,
             uid : cred.user.uid
         })
+
+        db.collection('statistics').doc('enrolled').get().then(snapshot =>
+        {
+
+            db.collection('statistics').doc('enrolled').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
     }).then(() =>
     {
         // Logs success to console
@@ -58,10 +67,14 @@ signUpForm.addEventListener('submit', (e) =>
     })
 });
 
+})
+
+
+// Redirects user if, or once they've logged in
 auth.onAuthStateChanged(user =>
     {
         if (user)
         {
-            location.href = 'user.html';
+            // location.href = 'user.html';
         }
     })
