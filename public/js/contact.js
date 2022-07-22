@@ -75,6 +75,14 @@ auth.onAuthStateChanged((user) =>
         })
 
         supportForm['support-entry'].value = null;
+
+        db.collection('statistics').doc('support').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('support').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
     })
 
     question.addEventListener('click', (e) =>
@@ -89,6 +97,14 @@ auth.onAuthStateChanged((user) =>
         })
 
         questionForm['question-entry'].value = null;
+
+        db.collection('statistics').doc('questions').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('questions').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
     })
 
     team.addEventListener('click', (e) =>
@@ -103,5 +119,13 @@ auth.onAuthStateChanged((user) =>
         })
 
         teamForm['team-entry'].value = null;
+
+        db.collection('statistics').doc('team-inquiries').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('team-inquiries').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
     })
 })

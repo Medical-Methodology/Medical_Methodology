@@ -21,6 +21,14 @@ signUpForm.addEventListener('submit', (e) =>
             name : signUpForm['first-name'].value + ' ' + signUpForm['last-name'].value,
             uid : cred.user.uid
         })
+
+        db.collection('statistics').doc('team').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('team').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
     }).then(() =>
     {
         // Logs success to console

@@ -36,6 +36,7 @@ header
 {
     color: white;
     text-decoration: none;
+    margin-left: -2vw;
 }
 
 #title-button p
@@ -102,6 +103,12 @@ main
     border: black solid;
     border-width: 4px;
     border-radius: 5px;
+    background-image: linear-gradient(90deg, #9d64ec, #6e5bff);
+}
+
+#statistics div, #support div, #team div
+{
+    background-image: none;
 }
 
 #details h1
@@ -119,6 +126,8 @@ main
 
 #bottom-content
 {
+    border-top: black solid;
+    border-width: 5px;
     height: 50vh;
     background-color:#983dcd;
     display: flex;
@@ -233,4 +242,13 @@ input
     border-width: 4px;
     border-radius: 5px;
     font-weight: 600;
+}
+
+#logout-button
+{
+    margin-right: 6vw;
+    background: transparent;
+    border: transparent;
+    font-size: 22px;
+    font-weight: 500;
 }

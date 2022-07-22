@@ -24,7 +24,6 @@ signUpForm.addEventListener('submit', (e) =>
 
         db.collection('statistics').doc('enrolled').get().then(snapshot =>
         {
-
             db.collection('statistics').doc('enrolled').set(
             {
                 number : (snapshot.data().number + 1)
@@ -66,8 +65,6 @@ signUpForm.addEventListener('submit', (e) =>
         signUpError.innerHTML = html;
     })
 });
-
-})
 
 
 // Redirects user if, or once they've logged in

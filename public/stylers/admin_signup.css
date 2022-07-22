@@ -152,6 +152,8 @@ main
 
 #bottom-content
 {
+    border-top: black solid;
+    border-width: 5px;
     height: 50vh;
     background-color:#983dcd;
     display: flex;
