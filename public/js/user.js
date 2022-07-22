@@ -27,7 +27,6 @@ auth.onAuthStateChanged(user =>
         {
             snapshot.docs.forEach(doc =>
             {
-                console.log(doc.id);
                 if (doc.id === user.uid)
                 {
                     let html =
@@ -69,7 +68,6 @@ auth.onAuthStateChanged(user =>
             {
                 snapshot.docs.forEach(doc =>
                 {
-                    console.log(doc.id);
                     if (doc.id === user.uid)
                     {
                         let html =

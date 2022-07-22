@@ -35,7 +35,7 @@
                 <div id = 'login-button'><a class = 'nav-link' href = 'login.html'>Login</a></div>
                 <div id = 'dictionary'><a class = 'nav-link' href = 'dictionary.html'>Dictionary</a></div>
                 <li><a class = 'nav-link' href = 'about.html'>About Us</a></li>
-                <div id = 'signup-button'><a class = 'nav-link' href = 'signup.html'>Sign Up</a></div>
+                <div id = 'signup-button'><a class = 'nav-link' style = 'margin-right: 1vw;' href = 'signup.html'>Sign Up</a></div>
             </div>
         </header>
         
@@ -45,17 +45,47 @@
                 <div id = 'addresses'>
                     <div id = 'support'>
                         <h1>Support</h1>
-                        <p>For support, please contact:</p>
+                        <form action = 'contact.html' method = 'POST' id = 'support-form'>
+                            <div style = 'padding: 5px; border-width: 0px;'></div>
+                            <textarea type = 'text' placeholder = 'Enter your inquiry here...' name = 'support-entry' id = 'support-entry'></textarea>
+                            
+                            <div style = 'padding: 5px; border-width: 0px;'></div>
+        
+                            <!-- Submit button -->
+                            <button id = 'support-submit' class = 'submit-button'>Submit</button>
+                        </form>
+
+                        <p style = 'padding-top: 8px;'>For further support, please contact:</p>
                         <p class = 'email'>medical.methodology-support@gmail.com</p>
                     </div>
                     <div id = 'questions'>
                         <h1>Questions</h1>
-                        <p>For general questions, please contact:</p>
+                        <form action = 'contact.html' method = 'POST' id = 'question-form'>
+                            <div style = 'padding: 5px; border-width: 0px;'></div>
+                            <textarea type = 'text' placeholder = 'Enter your inquiry here...' name = 'question-entry' id = 'question-entry'></textarea>
+                            
+                            <div style = 'padding: 5px; border-width: 0px;'></div>
+        
+                            <!-- Submit button -->
+                            <button id = 'question-submit' class = 'submit-button'>Submit</button>
+                        </form>
+
+                        <p style = 'padding-top: 8px;'>For general questions, please contact:</p>
                         <p class = 'email'>medical.methodology-questions@gmail.com</p>
                     </div>
                     <div id = 'team'>
                         <h1>Team</h1>
-                        <p>Want to join the team? Please contact:</p>
+                        <form action = 'contact.html' method = 'POST' id = 'team-form'>
+                            <div style = 'padding: 5px; border-width: 0px;'></div>
+                            <textarea type = 'text' placeholder = 'Enter your inquiry here...' name = 'team-entry' id = 'team-entry'></textarea>
+                            
+                            <div style = 'padding: 5px; border-width: 0px;'></div>
+        
+                            <!-- Submit button -->
+                            <button id = 'team-submit' class = 'submit-button'>Submit</button>
+                        </form>
+
+                        <p style = 'padding-top: 8px;'>Want to join the team? Please contact:</p>
                         <p class = 'email'>medical.methodology@gmail.com</p>
                     </div>
                 </div>

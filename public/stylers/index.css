@@ -10,6 +10,7 @@
 header
 {
     padding-bottom: 100px;
+    background-color: #e48282;
 }
 
 #bar
@@ -35,6 +36,7 @@ header
 {
     color: white;
     text-decoration: none;
+    margin-left: -4vw;
 }
 
 #title-button p
@@ -56,11 +58,6 @@ header
 #selected, .nav-link:hover
 {
     color: white;
-    border: solid;
-    border-width: 3px;
-    border-radius: 5px;
-    border-image: linear-gradient(to right, #a251d1, #ea8e8e);
-    border-image-slice: 1;
 }
 
 ::-webkit-scrollbar 
@@ -85,12 +82,14 @@ header
 #welcome
 {
     background-image:linear-gradient(#e48282, #a058c9);
+    border-bottom: black solid;
+    border-width: 8px;
     height: 90vh;
 }
 
 #welcome h1
 {
-    padding-top: 50px;
+    padding-top: 7vh;
     align-items: center;
     align-self: center;
 }
@@ -104,14 +103,13 @@ header
 
 #description
 {
-    /* flex: 1; */
     color: rgb(79, 73, 73);
-    width: 27%;
+    width: 29%;
     height: fit-content;
-    font-size: 20px;
+    font-size: 20.5px;
     font-weight: 500;
-    line-height: 40px;
-    margin-top: 11vh;
+    line-height: 50px;
+    margin-top: 7vh;
     margin-left: 15vw;
 }
 
@@ -122,14 +120,12 @@ header
 
 #mission
 {
-    /* flex: 1; */
     width: 32%;
     font-size: 35px;
     font-weight: 600;
     line-height: 70px;
-    margin-top: 5vh;
+    margin-top: 4vh;
     margin-right: 17vw;
-    /* margin-left: 55vw; */
     padding: 20px;
     border: solid;
     border-width: 8px;
@@ -142,14 +138,16 @@ header
 {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 #learn-more img
 {
     flex: 1;
-    width: 5%;
-    height: 5%;
+    width: 15%;
+    height: 15%;
     margin-left: 130px;
+    margin-top: -7px;
 }
 
 #learn-more a
@@ -162,7 +160,7 @@ header
 
 #first-section h1
 {
-    font-size: 70px;
+    font-size: 75px;
     text-decoration: none;
 }
 
@@ -234,6 +232,8 @@ main h1
 
 #bottom-content
 {
+    border-top: black solid;
+    border-width: 5px;
     height: 50vh;
     background-color:#983dcd;
     display: flex;
@@ -284,6 +284,7 @@ main h1
     padding-right: 0px;
     padding-top: 65px;
     padding-bottom: 20px;
+    text-decoration: underline;
 }
 
 #left-column, #center-column, #right-column

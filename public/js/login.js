@@ -52,10 +52,11 @@ loginForm.addEventListener('submit', (e) =>
     })
 })
 
-auth.onAuthStateChanged(user =>
-{
-    if (user)
-    {
-        location.href = 'user.html';
-    }
-})
+// // Redirects user if, or once they've logged in
+// auth.onAuthStateChanged(user =>
+// {
+//     if (user)
+//     {
+//         location.href = 'user.html';
+//     }
+// })

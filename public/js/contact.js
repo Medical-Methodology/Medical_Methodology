@@ -1,6 +1,12 @@
 const loginButton = document.querySelector('#login-button');
 const signupButton = document.querySelector('#signup-button');
 const dictionary = document.querySelector('#dictionary');
+const supportForm = document.querySelector('#support-form');
+const support = document.querySelector('#support-submit');
+const questionForm = document.querySelector('#question-form');
+const question = document.querySelector('#question-submit');
+const teamForm = document.querySelector('#team-form');
+const team = document.querySelector('#team-submit');
 
 auth.onAuthStateChanged((user) =>
 {
@@ -19,7 +25,7 @@ auth.onAuthStateChanged((user) =>
              <!-- Logout button -->
              <button style = 
              '
-             margin-right: 7vw;
+             margin-right: 5vw;
              background: transparent;
              border: transparent;
              font-size: 22px;
@@ -56,4 +62,70 @@ auth.onAuthStateChanged((user) =>
 
         signupButton.style.marginRight = '4vw';
     }
+
+    support.addEventListener('click', (e) =>
+    {
+        e.preventDefault();
+
+        const supportValue = supportForm['support-entry'].value;
+        db.collection('support').doc(Date.now().toString()).set(
+        {
+            Inquiry : supportValue,
+            Email: user.email
+        })
+
+        supportForm['support-entry'].value = null;
+
+        db.collection('statistics').doc('support').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('support').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
+    })
+
+    question.addEventListener('click', (e) =>
+    {
+        e.preventDefault();
+
+        const questionValue = questionForm['question-entry'].value;
+        db.collection('questions').doc(Date.now().toString()).set(
+        {
+            Inquiry : questionValue,
+            Email: user.email
+        })
+
+        questionForm['question-entry'].value = null;
+
+        db.collection('statistics').doc('questions').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('questions').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
+    })
+
+    team.addEventListener('click', (e) =>
+    {
+        e.preventDefault();
+
+        const teamValue = teamForm['team-entry'].value;
+        db.collection('team').doc(Date.now().toString()).set(
+        {
+            Inquiry : teamValue,
+            Email: user.email
+        })
+
+        teamForm['team-entry'].value = null;
+
+        db.collection('statistics').doc('team-inquiries').get().then(snapshot =>
+        {
+            db.collection('statistics').doc('team-inquiries').set(
+            {
+                number : (snapshot.data().number + 1)
+            })
+        })
+    })
 })

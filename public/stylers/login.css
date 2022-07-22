@@ -10,6 +10,7 @@
 header
 {
     padding-bottom: 100px;
+    background-color: #f2adad;
 }
 
 #bar
@@ -35,6 +36,7 @@ header
 {
     color: white;
     text-decoration: none;
+    margin-left: -6vw;
 }
 
 #title-button p
@@ -56,11 +58,6 @@ header
 #selected, .nav-link:hover
 {
     color: white;
-    border: solid;
-    border-width: 3px;
-    border-radius: 5px;
-    border-image: linear-gradient(to right, #a251d1, #ea8e8e);
-    border-image-slice: 1;
 }
 
 ::-webkit-scrollbar 
@@ -145,6 +142,8 @@ main
 
 #bottom-content
 {
+    border-top: black solid;
+    border-width: 5px;
     height: 50vh;
     background-color:#983dcd;
     display: flex;
@@ -195,6 +194,7 @@ main
     padding-right: 0px;
     padding-top: 65px;
     padding-bottom: 20px;
+    text-decoration: underline;
 }
 
 #left-column, #center-column, #right-column
