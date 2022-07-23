@@ -109,7 +109,7 @@ main
     padding: 15px;
     border: yellow solid;
     border-width: 4px;
-    border-radius: 5px;
+    border-radius: 7px;
     width: 30%;
     height: fit-content;
 }

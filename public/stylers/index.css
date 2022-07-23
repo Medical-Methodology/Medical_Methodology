@@ -85,6 +85,7 @@ header
     border-bottom: black solid;
     border-width: 8px;
     height: 90vh;
+    min-height: fit-content;
 }
 
 #welcome h1
@@ -153,7 +154,7 @@ header
 #learn-more a
 {
     min-width: fit-content;
-    margin-right: 150px;
+    margin-right: 38%;
     flex: 2;
     color: #45066a;
 }

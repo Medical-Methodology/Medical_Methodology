@@ -4,18 +4,38 @@ const numberSupport = document.querySelector('#number-support');
 const numberQuestions = document.querySelector('#number-questions');
 const numberInquiries = document.querySelector('#number-inquiries');
 const logout = document.querySelector('#logout-button');
+const supportInquiries = document.querySelector('#support-inquiries');
+const questionInquiries = document.querySelector('#question-inquiries');
+const teamInquiries = document.querySelector('#team-inquiries');
+const popup = document.querySelector('#popup');
 
 auth.onAuthStateChanged(user =>
 {
     if (user)
     {
+        db.collection('admin').get().then(snapshot =>
+        {
+            var admin = false;
+            snapshot.docs.forEach(doc =>
+            {
+                if (user.uid === doc.data().uid)
+                {
+                    admin = true;
+                }
+            })
+
+            if (!admin)
+            {
+                location.href = 'user.html';
+            }
+        })
+
         db.collection('statistics').doc('enrolled').get().then(snapshot =>
         {
             let html = 
             `
                 <h2>Number Enrolled: ${snapshot.data().number}</h2>
             `;
-
             numberEnrolled.innerHTML = html;
         })
 
@@ -25,8 +45,45 @@ auth.onAuthStateChanged(user =>
             `
                 <h2>Team Size: ${snapshot.data().number}</h2>
             `;
-
             teamSize.innerHTML = html;
+        })
+        
+        db.collection('support').get().then(snapshot =>
+        {
+            let html = '';
+            snapshot.docs.forEach(doc =>
+            {
+                const temporary = 
+                `
+                <a href = '#' onclick = "supportPopup(${doc.id}, 'support'); return false;" style = 'text-decoration: none;'><p style = 'text-align: left; font-weight: 500; color: black;'>➡ ${doc.data().Inquiry.toString().substring(0, 37)}...</p></a>
+                <p style = 'text-align: left; font-size: 12px; padding-left: 15px;'>-  ${doc.data().Name}</p>
+                    <p style = 'text-align: left; font-size: 12px; padding-left: 15px;'>-  ${doc.data().Email}</p>
+                    <div style = 'padding: 8px 0px 8px 0px; border-width: 0px;'></div>
+                `;
+
+                html += temporary;
+            })
+
+            supportInquiries.innerHTML = html;
+        })
+
+        db.collection('questions').get().then(snapshot =>
+        {
+            let html = '';
+            snapshot.docs.forEach(doc =>
+            {
+                const temporary = 
+                `
+                    <a href = '#' onclick = "supportPopup(${doc.id}, 'questions'); return false;" style = 'text-decoration: none;'><p style = 'text-align: left; font-weight: 500; color: black;'>➡ ${doc.data().Inquiry.toString().substring(0, 37)}...</p></a>
+                    <p style = 'text-align: left; font-size: 12px; padding-left: 15px;'>-  ${doc.data().Name}</p>
+                    <p style = 'text-align: left; font-size: 12px; padding-left: 15px;'>-  ${doc.data().Email}</p>
+                    <div style = 'padding: 8px 0px 8px 0px; border-width: 0px;'></div>
+                `;
+
+                html += temporary;
+            })
+
+            questionInquiries.innerHTML = html;
         })
 
         db.collection('statistics').doc('support').get().then(snapshot =>
@@ -37,6 +94,25 @@ auth.onAuthStateChanged(user =>
             `;
 
             numberSupport.innerHTML = html;
+
+            db.collection('team').get().then(snapshot =>
+            {
+                let html = '';
+                snapshot.docs.forEach(doc =>
+                {
+                    const temporary = 
+                    `
+                        <a href = '#' onclick = "supportPopup(${doc.id}, 'team'); return false;" style = 'text-decoration: none;'><p style = 'text-align: left; font-weight: 500; color: black;'>➡ ${doc.data().Inquiry.toString().substring(0, 37)}...</p></a>
+                        <p style = 'text-align: left; font-size: 12px; padding-left: 15px;'>-  ${doc.data().Name}</p>
+                        <p style = 'text-align: left; font-size: 12px; padding-left: 15px;'>-  ${doc.data().Email}</p>
+                        <div style = 'padding: 8px 0px 8px 0px; border-width: 0px;'></div>
+                    `;
+
+                    html += temporary;
+                })
+
+                teamInquiries.innerHTML = html;
+            })
         })
         
         db.collection('statistics').doc('questions').get().then(snapshot =>
@@ -65,16 +141,75 @@ auth.onAuthStateChanged(user =>
     }
 })
 
-        // Adds listener for when button is clicked
-        logout.addEventListener('click', (e) =>
-        {
-            // Prevents default action
-            e.preventDefault();
 
-            // Logs user out
-            auth.signOut().then(() =>
+function supportPopup(ID, collection)
+{
+    db.collection(collection).get().then(snapshot =>
+    {
+        snapshot.docs.forEach(doc =>
+        {
+            if (doc.id.toString() === ID.toString())
             {
-                // Redirects user to main page
-                location.href = '../index.html';
-            })
-        });
+                let timestamp = new Date(ID).toString();
+        
+                var hours = parseInt(timestamp.substring(16, 18));
+                var partOfDay;
+                if (hours > 12)
+                {
+                    hours -= 12;
+                    partOfDay = "PM";
+                }
+                else if (hours == 12)
+                {
+                    partOfDay = "PM";
+                }
+                else
+                {
+                    if (hours == 0)
+                    {
+                        hours = 12;
+                    }
+                    partOfDay = "AM";
+                }
+                
+                var timestampFinal = timestamp.substring(3, 11) + ' ' + hours + timestamp.substring(18, 21) + ' ' + partOfDay;
+
+                let html = 
+                `
+                <div style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
+                <div style = 'position: absolute; top: 30%; left: 35%; width: 30%; height: 40%; margin: auto; background-color: rgba(0, 0, 0, 0.9); border-radius: 15px; padding: 3px 20px 5px 20px;'>
+                    <button onclick = closePopup() style = 'background-color: transparent; width: fit-content; height: fit-content; padding: 0px; border-width: 0px; position: absolute; left: 64.5%; top: 2.5%;'><img src = '../images/exit-button.png' style = 'width: 10%; height: 15%; background-color: transparent;'></button>
+                    <h1 style = 'color: white; text-align: center; font-size: 35px; padding: 10px 0px 10px 0px; text-decoration: underline;'>Message Contents</h1>
+                    <p style = 'color: white; font-size: 20px; text-align: left; padding-bottom: 8px; line-height: 35px;'>${doc.data().Inquiry}</p>
+                    <p style = 'color: white; font-size: 16px; text-align: left; padding: 0px 0px 12px 7px;'><b>Name:</b> ${doc.data().Name}</p>
+                    <p style = 'color: white; font-size: 16px; text-align: left; padding: 0px 0px 12px 7px;'><b>Email:</b> ${doc.data().Email}</p>
+                    <p style = 'color: white; font-size: 16px; text-align: left; padding: 0px 0px 12px 7px;'><b>Sent:</b> ${timestampFinal}</p>
+                </div>
+                `;
+
+                popup.innerHTML = html;
+            }
+        })
+    })
+}
+
+function closePopup()   
+{
+    let html = '';
+
+    popup.innerHTML = html;
+}
+
+// Adds listener for when button is clicked
+logout.addEventListener('click', (e) =>
+{
+    // Prevents default action
+    e.preventDefault();
+
+    // Logs user out
+    auth.signOut().then(() =>
+    {
+        // Redirects user to main page
+        location.href = '../index.html';
+    })
+});
