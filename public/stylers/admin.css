@@ -76,18 +76,22 @@ header
 ::-webkit-scrollbar-thumb 
 {
     background-image: linear-gradient(#7225dd, #b27cd2);
+    border: black solid;
+    border-width: 2px;
     border-radius: 100px;
 }
 
 main
 {
     background-image:linear-gradient(#f2adad, #ba7edc);
-    height: 100vh;
+    min-height: 100vh;
+    max-height: fit-content;
 }
 
 #details
 {
     padding-top: 6vh;
+    padding-bottom: 15vh;
     display: flex;
     flex-wrap: inherit;
     justify-content: space-between;
@@ -99,14 +103,22 @@ main
 #details div
 {
     width: 25%;
+    height: fit-content;
     padding: 5px 10px 5px 10px;
     border: black solid;
     border-width: 4px;
-    border-radius: 5px;
-    background-image: linear-gradient(90deg, #9d64ec, #6e5bff);
+    border-radius: 10px;
+    background-image: linear-gradient(310deg, #b183f1, #7967ff);
 }
 
-#statistics div, #support div, #team div
+#support, #questions, #team
+{
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+#statistics div, #support div, #questions div, #team div
 {
     background-image: none;
 }

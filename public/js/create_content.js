@@ -2,9 +2,9 @@
 const titleInput = document.querySelector('#title-info');
 const paragraphInput = document.querySelector('#paragraph-info');
 
-
 // Creates HTML Document
 let HTMLdocument = document.implementation.createHTMLDocument("Example");
+
 // Defines HTML style characteristics
 HTMLdocument.body.style.backgroundColor = 'white';
 HTMLdocument.body.style.border = "black solid";
