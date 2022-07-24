@@ -49,15 +49,15 @@ signUpForm.addEventListener('submit', (e) =>
         let html =
         `
             <p style = 
-            
-            'background-color: red;
+            '
+            background-color: red;
             width: fit-content;
             padding: 10px;
             margin: auto;
             border: black solid;
-            border-radius: 3px;' 
-            
-            >Error: Improper email format.</p>
+            border-radius: 5px;
+            font-weight: 500;
+            '>Error: Improper email format.</p>
             <div style = 'padding: 11px;'></div>
         `;
 

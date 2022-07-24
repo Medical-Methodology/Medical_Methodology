@@ -44,7 +44,16 @@ loginForm.addEventListener('submit', (e) =>
         // Creates error message
         let html = 
         `
-            <p>Error: email or password is incorrect.</p>
+            <div style = 'padding: 17px 0px 3px 0px;'></div>
+            <p style =
+            '
+                font-weight: 500;
+                padding: 5px;
+                background-color: red;
+                border: black solid;
+                border-width: 3px;
+                border-radius: 5px;
+            '>Error: email or password is incorrect.</p>
         `;
 
         //Injects HTML for error message
