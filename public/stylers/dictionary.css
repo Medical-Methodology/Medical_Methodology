@@ -107,9 +107,10 @@ main
     border-radius: 5px;
 }
 
-#new-term button
+#new-term button, #create-term
 {
     font-size: 16px;
+    font-weight: 500;
     color: black;
     background-color: red;
     padding-top: 5px;
