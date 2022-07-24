@@ -3,6 +3,7 @@ const terms = document.querySelector('#terms');
 const createTerm = document.querySelector('#create');
 const listTerms = document.querySelector('#list');
 const logout = document.querySelector('#logout-button');
+const popup = document.querySelector('#term-popup');
 
 // Injectable HTML for filter-by-letter buttons
 var searchTools =
@@ -106,7 +107,7 @@ const createList = (data) =>
         const td = 
         `
             <!-- Creates element containing term and definition -->
-            <p id = ${counter} style = 'font-size: 19px; font-weight: 400; text-align: left; line-height: 40px;'><b><u>${term.term}</u></b> - ${term.definition}</p>
+            <p id = ${counter} style = 'font-size: 19px; font-weight: 400; text-align: left; line-height: 40px;'><b><a href = '#top' onclick = "definitionPopup(${counter});")>${term.term}</a></b> - ${term.definition}</p>
             
             <!-- Spacer -->
             <div style = 'padding: 10px;'></div>
@@ -167,23 +168,7 @@ auth.onAuthStateChanged(user =>
                 // Creates injectable HTML
                 let html = 
                 `
-                    <!-- Form for admins to create new terms -->
-                    <form action = 'dictionary.html' method = 'POST' id = 'new-term'>
-                        <div id = 'term-def'>
-                            <!-- Term entry -->
-                            <input type = 'text' placeholder = 'Term...' name = 'term' id = 'term' style = 'background: transparent;'></input>
-                            <!-- Definition entry -->
-                            <input type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition' style = 'background: transparent;'></input>
-                        </div>
-    
-                        <!-- Spacer -->
-                        <div id = 'small-gap'></div>
-    
-                        <!-- Submit button -->
-                        <button id = 'create-term'>Submit</button>
-                    </form>
-
-                    <br></br>
+                    <button id = 'create-term' onclick = createTermWindow()>Create Term</button>
                 `;
     
                 // Injects HTML
@@ -205,24 +190,6 @@ auth.onAuthStateChanged(user =>
             })
         });
     }
-})
-
-// Submits term and definition to database
-createTerm.addEventListener('submit', (e) =>
-{
-    // Prevents default action
-    e.preventDefault();
-
-    // Stores term and definition
-    const term = document.querySelector('#term').value;
-    const definition = document.querySelector('#definition').value;
-
-    // Stores data in terms Collection
-    db.collection('terms').doc(term).set(
-    {
-            term : term,
-            definition : definition
-    })
 })
 
 // Creates list of terms
@@ -425,22 +392,95 @@ function sort(letter)
     }
 }
 
-function moreInfo(word)
+function definitionPopup(counter)
 {
     db.collection('terms').get().then(snapshot =>
+    {
+        let html = 
+        `
+        <div style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
+        <div style = 'position: absolute; top: 30%; left: 25%; width: 50%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>
+            <button onclick = closePopup() style = 'background-color: transparent; width: fit-content; height: fit-content; padding: 0px; border-width: 0px; position: absolute; left: 78.8%; top: 2.5%;'><img src = '../images/exit-button.png' style = 'width: 10%; height: 15%; background-color: transparent;'></button>
+            <h1 style = 'color: black; text-align: center; font-size: 35px; padding: 10px 0px 10px 0px; text-decoration: underline;'>${snapshot.docs[counter-1].data().term}</h1>
+            <p style = 'color: black; font-size: 20px; text-align: left; padding-bottom: 8px; line-height: 35px;'>${snapshot.docs[counter-1].data().definition}</p>
+            <div style = 'padding: 8px 0px 8px 0px;'></div>
+            <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Common Fields:</b> ${snapshot.docs[counter-1].data().common_fields}</p>
+            <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Abbreviations:</b> ${snapshot.docs[counter-1].data().abbreviations}</p>
+        </div>
+        `;
+
+        popup.innerHTML = html;
+    })
+}
+
+function closePopup()
+{
+    popup.innerHTML = '';
+}
+
+function createTermWindow()
+{
+    let html =
+    `
+        <div style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
+        <div style = 'position: absolute; top: 30%; left: 35%; width: 30%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>
+            <button onclick = closePopup() style = 'background-color: transparent; width: fit-content; height: fit-content; padding: 0px; border-width: 0px; position: absolute; left: 63.8%; top: 2.5%;'><img src = '../images/exit-button.png' style = 'width: 10%; height: 15%; background-color: transparent;'></button>
+    
+            <!-- Form for admins to create new terms -->
+            <form action = 'dictionary.html' method = 'POST' id = 'new-term'>
+                    <!-- Term entry -->
+                    <div style = 'padding: 5px 0px 5px 0px;'></div>
+                    <input type = 'text' placeholder = 'Term...' name = 'term' id = 'term' style = 'background: transparent; border-width: 2px;'></input>
+                    <br></br>
+                    <!-- Definition entry -->
+                    <textarea type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition' style = 'background: transparent; min-width: 95%; max-width: 95%; min-height: 15vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px;'></textarea>
+                    <br></br>
+                    <textarea type = 'text' placeholder = 'Common Fields...' name = 'common-fields' id = 'common-fields' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
+                    <br></br>
+                    <textarea type = 'text' placeholder = 'Abbreviations...' name = 'abbreviations' id = 'abbreviations' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
+                    <style>
+                    ::placeholder
+                    {
+                        font-weight: 500;
+                    }
+                    </style>
+                <!-- Spacer -->
+                <div id = 'small-gap'></div>
+
+                <!-- Submit button -->
+                <button id = 'submit-term'>Submit</button>
+            </form>
+        </div>
+        <br></br>
+    `;
+
+    popup.innerHTML = html;
+    const submitTerm = document.querySelector('#submit-term');
+
+    submitTerm.addEventListener('click', (e) =>
+    {
+        e.preventDefault();
+        
+        // Stores term and definition
+        const term = document.querySelector('#term').value;
+        const definition = document.querySelector('#definition').value;
+        const commonFields = document.querySelector('#common-fields').value;
+        const abbreviations = document.querySelector('#abbreviations').value;
+
+        // Stores data in terms Collection
+        db.collection('terms').doc(term).set(
         {
-            // Iterates through documents in collection
-            snapshot.docs.forEach(doc =>
-            {
-                // Stores document data
-                const information = doc.data();
-                if (information.term === word)
-                {
-                    let html =
-                    `
-                        <div class = 'popup
-                    `;
-                }
+            term : term,
+            definition : definition,
+            common_fields : commonFields,
+            abbreviations : abbreviations
         })
+
+        console.log('Successfully created new term and definition.');
+
+        document.querySelector('#term').value = null;
+        document.querySelector('#definition').value = null;
+        document.querySelector('#common-fields').value = null;
+        document.querySelector('#abbreviations').value = null;
     })
 }

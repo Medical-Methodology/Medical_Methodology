@@ -26,6 +26,9 @@
         <title>Dictionary</title>
     </head>
 
+    <!-- Top reference position allows screen to scroll up when popup is activated -->
+    <div id = 'top'></div>
+
     <body>
         <!-- Navigation bar -->
         <header>
@@ -45,8 +48,10 @@
                 <h1>Dictionary</h1>
 
                 <!-- Div containing injectable HTML for Admins to make new terms -->
-                <div id = 'create'></div>
+                <div id = 'create' style = 'margin-top: -1vh; margin-bottom: 3vh;'></div>
 
+                <div id = 'term-popup'></div>
+                
                 <!-- Main content where list of terms and search/filter is located -->
                 <div id = 'main-content'>
                     <div id = 'list'></div>
