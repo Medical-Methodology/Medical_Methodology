@@ -176,19 +176,66 @@ function supportPopup(ID, collection)
 
                 let html = 
                 `
-                <div style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
+                <div id = 'black-screen' style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
                 <div style = 'position: absolute; top: 30%; left: 35%; width: 30%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>
-                    <button onclick = closePopup() style = 'background-color: transparent; width: fit-content; height: fit-content; padding: 0px; border-width: 0px; position: absolute; left: 64.5%; top: 2.5%;'><img src = '../images/exit-button.png' style = 'width: 10%; height: 15%; background-color: transparent;'></button>
                     <h1 style = 'color: black; text-align: center; font-size: 35px; padding: 10px 0px 10px 0px; text-decoration: underline;'>Message Contents</h1>
                     <p style = 'color: black; font-size: 18px; text-align: left; padding-bottom: 8px; line-height: 35px;'>${doc.data().Inquiry}</p>
                     <div style = 'padding: 5px 0px 5px 0px;'></div>
                     <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Name:</b> ${doc.data().Name}</p>
                     <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Email:</b> ${doc.data().Email}</p>
                     <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Sent:</b> ${timestampFinal}</p>
+                    <div style = 'padding: 5px 0px 5px 0px;'></div>
+                    <button id = 'delete-button' style = 'padding: 5px; background-color: red; border: black solid; border-width: 3px; border-radius: 5px; font-weight: 500;'>Delete</button>
                 </div>
                 `;
 
                 popup.innerHTML = html;
+
+                const blackScreen = document.querySelector('#black-screen');
+                blackScreen.addEventListener('click', (e) =>
+                {
+                    closePopup();
+                })
+
+                const deleteButton = document.querySelector('#delete-button');
+                deleteButton.addEventListener('click', (e) =>
+                {
+                    e.preventDefault();
+                    db.collection(collection).doc(ID.toString()).delete();
+                    console.log("Item deleted.");
+                    closePopup();
+
+                    if (collection.toString() === 'team')
+                    {
+                        db.collection('statistics').doc('team-inquiries').get().then(snapshot =>
+                        {
+                            db.collection('statistics').doc('team-inquiries').set(
+                            {
+                                number : (snapshot.data().number - 1)
+                            })  
+                        }).then(() =>
+                        {
+                            setTimeout(function ()
+                            {
+                                location.reload();
+                            }, 300); 
+                        })
+                    }
+                    
+                    db.collection('statistics').doc(collection).get().then(snapshot =>
+                    {
+                        db.collection('statistics').doc(collection).set(
+                        {
+                            number : (snapshot.data().number - 1)
+                        })  
+                    }).then(() =>
+                    {
+                        setTimeout(function ()
+                        {
+                            location.reload();
+                        }, 300); 
+                    })
+                })
             }
         })
     })

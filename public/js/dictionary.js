@@ -394,22 +394,87 @@ function sort(letter)
 
 function definitionPopup(counter)
 {
-    db.collection('terms').get().then(snapshot =>
+    auth.onAuthStateChanged((user) =>
     {
-        let html = 
-        `
-        <div style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
-        <div style = 'position: absolute; top: 30%; left: 25%; width: 50%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>
-            <button onclick = closePopup() style = 'background-color: transparent; width: fit-content; height: fit-content; padding: 0px; border-width: 0px; position: absolute; left: 78.8%; top: 2.5%;'><img src = '../images/exit-button.png' style = 'width: 10%; height: 15%; background-color: transparent;'></button>
-            <h1 style = 'color: black; text-align: center; font-size: 35px; padding: 10px 0px 10px 0px; text-decoration: underline;'>${snapshot.docs[counter-1].data().term}</h1>
-            <p style = 'color: black; font-size: 20px; text-align: left; padding-bottom: 8px; line-height: 35px;'>${snapshot.docs[counter-1].data().definition}</p>
-            <div style = 'padding: 8px 0px 8px 0px;'></div>
-            <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Common Fields:</b> ${snapshot.docs[counter-1].data().common_fields}</p>
-            <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Abbreviations:</b> ${snapshot.docs[counter-1].data().abbreviations}</p>
-        </div>
-        `;
+        var admin = false;
 
-        popup.innerHTML = html;
+        db.collection('admin').get().then(snapshot =>
+        {
+            snapshot.docs.forEach(doc =>
+            {
+                if (doc.id.toString() === user.uid.toString())
+                {
+                    admin = true;
+                }
+            })
+
+            db.collection('terms').get().then(snapshot =>
+            {
+                let html = 
+                `
+                <div id = 'black-screen' style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
+                <div style = 'position: absolute; top: 30%; left: 25%; width: 50%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>
+                    <h1 style = 'color: black; text-align: center; font-size: 35px; padding: 10px 0px 10px 0px; text-decoration: underline;'>${snapshot.docs[counter-1].data().term}</h1>
+                    <p style = 'color: black; font-size: 20px; text-align: left; padding-bottom: 8px; line-height: 35px;'>${snapshot.docs[counter-1].data().definition}</p>
+                    <div style = 'padding: 8px 0px 8px 0px;'></div>
+                    <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Common Fields:</b> ${snapshot.docs[counter-1].data().common_fields}</p>
+                    <p style = 'color: black; font-size: 16px; text-align: left; padding: 0px 0px 12px 0px;'><b>Abbreviations:</b> ${snapshot.docs[counter-1].data().abbreviations}</p>
+                `;
+        
+        
+                if (admin)
+                {
+                    let ending =
+                    `
+                        <div style = 'padding: 5px 0px 5px 0px;'></div>
+                        <div style = 'display: flex; gap: 10px; justify-content: center;'>
+                            <button id = 'edit-button' style = 'padding: 5px 8px 5px 8px; font-weight: 500; font-size: 16px; background-color: red; border: black solid; border-width: 3px; border-radius: 5px;'>Edit</button>
+                            <button id = 'delete-button' style = 'padding: 5px 8px 5px 8px; font-weight: 500; font-size: 16px; background-color: red; border: black solid; border-width: 3px; border-radius: 5px;'>Delete</button>
+                        </div>
+                        </div>
+                    `;
+
+                    html += ending;
+                }
+                else
+                {
+                    let ending = 
+                    `
+                        </div>
+                    `;
+
+                    html += ending;
+                }
+
+                popup.innerHTML = html;
+
+                const blackScreen = document.querySelector('#black-screen');
+                blackScreen.addEventListener('click', (e) =>
+                {
+                    closePopup();
+                })
+
+                const edit = document.querySelector('#edit-button');
+                edit.addEventListener('click', (e) =>
+                {
+                    e.preventDefault();
+                    createTermWindow();
+                    document.querySelector('#term').value = snapshot.docs[counter-1].data().term;
+                    document.querySelector('#definition').value = snapshot.docs[counter-1].data().definition;
+                    document.querySelector('#common-fields').value = snapshot.docs[counter-1].data().common_fields;
+                    document.querySelector('#abbreviations').value = snapshot.docs[counter-1].data().abbreviations;
+                })
+
+                const deleteButton = document.querySelector('#delete-button');
+                deleteButton.addEventListener('click', (e) =>
+                {
+                    e.preventDefault();
+                    db.collection('terms').doc(snapshot.docs[counter-1].id).delete();
+                    closePopup();
+                    console.log('Term has been deleted.');
+                })
+            })
+        })
     })
 }
 
@@ -422,18 +487,16 @@ function createTermWindow()
 {
     let html =
     `
-        <div style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
-        <div style = 'position: absolute; top: 30%; left: 35%; width: 30%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>
-            <button onclick = closePopup() style = 'background-color: transparent; width: fit-content; height: fit-content; padding: 0px; border-width: 0px; position: absolute; left: 63.8%; top: 2.5%;'><img src = '../images/exit-button.png' style = 'width: 10%; height: 15%; background-color: transparent;'></button>
-    
+        <div id = 'black-screen' style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
+        <div style = 'position: absolute; top: 30%; left: 35%; width: 30%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>    
             <!-- Form for admins to create new terms -->
             <form action = 'dictionary.html' method = 'POST' id = 'new-term'>
                     <!-- Term entry -->
                     <div style = 'padding: 5px 0px 5px 0px;'></div>
-                    <input type = 'text' placeholder = 'Term...' name = 'term' id = 'term' style = 'background: transparent; border-width: 2px;'></input>
+                    <textarea type = 'text' placeholder = 'Term...' name = 'term' id = 'term' style = 'font-size: 20px; font-weight: 500; background: transparent; border: black solid; border-width: 2px; border-radius: 6px; height: 4.6vh; min-height: 4.6vh; min-width: fit-content; padding: 5px;'></textarea>
                     <br></br>
                     <!-- Definition entry -->
-                    <textarea type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition' style = 'background: transparent; min-width: 95%; max-width: 95%; min-height: 15vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px;'></textarea>
+                    <textarea type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition' style = 'font-size: 14px; background: transparent; min-width: 95%; max-width: 95%; min-height: 15vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px;'></textarea>
                     <br></br>
                     <textarea type = 'text' placeholder = 'Common Fields...' name = 'common-fields' id = 'common-fields' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
                     <br></br>
@@ -455,6 +518,13 @@ function createTermWindow()
     `;
 
     popup.innerHTML = html;
+
+    const blackScreen = document.querySelector('#black-screen');
+    blackScreen.addEventListener('click', (e) =>
+    {
+        closePopup();
+    })
+
     const submitTerm = document.querySelector('#submit-term');
 
     submitTerm.addEventListener('click', (e) =>
@@ -478,9 +548,6 @@ function createTermWindow()
 
         console.log('Successfully created new term and definition.');
 
-        document.querySelector('#term').value = null;
-        document.querySelector('#definition').value = null;
-        document.querySelector('#common-fields').value = null;
-        document.querySelector('#abbreviations').value = null;
+        closePopup();
     })
 }

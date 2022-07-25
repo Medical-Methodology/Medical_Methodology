@@ -29,20 +29,24 @@ header
 
 #logo
 {
+    margin-left: 0.5vw;
     width: 8vw;
+    padding: 2px 0px 2px 0px;
 }
 
 #title-button
 {
     color: white;
     text-decoration: none;
-    margin-left: -6vw;
+    margin-left: -16vw;
+    margin-right: -6vw;
 }
 
 #title-button p
 {
     font-size: 35px;
     font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 4px;
 }
 
 .nav-link
