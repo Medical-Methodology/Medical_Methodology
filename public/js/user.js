@@ -64,27 +64,7 @@ auth.onAuthStateChanged(user =>
 
         if (admin)
         {
-            db.collection('admin').get().then(snapshot =>
-            {
-                snapshot.docs.forEach(doc =>
-                {
-                    if (doc.id === user.uid)
-                    {
-                        let html =
-                        `
-                            <h1 style =
-                            '
-                                font-size: 60px;
-                                padding-top: 40px;
-                                padding-bottom: 50px;
-                            ;'
-                            >Welcome Back ${doc.data().name}!</h1>
-                        `;
-
-                        welcomeTag.innerHTML = html;
-                    }
-                })
-            })
+            location.href = 'admin.html';
         }
     }
     else
