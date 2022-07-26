@@ -29,6 +29,13 @@ auth.onAuthStateChanged(user =>
             {
                 if (doc.id === user.uid)
                 {
+                    admin = false;
+
+                    if (admin)
+                    {
+                        location.href = 'admin.html';
+                    }
+
                     let html =
                     `
                         <h1 style =
@@ -37,35 +44,52 @@ auth.onAuthStateChanged(user =>
                             padding-top: 40px;
                             padding-bottom: 50px;
                         ;'
-                        >Welcome Back ${doc.data().name}!</h1>
+                        >Welcome ${doc.data().name}!</h1>
                     `;
 
-                    let content = 
-                    `
-                        <div id = 'main-content'>
-                            <div id = 'enrolled'>
-                                <h1>Enrolled Courses:</h1>
-                            </div>
-                            <div id = 'progress'>
-                                <h1>Last Leftoff:</h1>
-                            </div>
-                            <div id = 'next'>
-                                <h1>What's Next?</h1>
-                            </div>
-                        </div>
-                    `;
+                    welcomeTag.innerHTML = html;
 
-                     welcomeTag.innerHTML = html;
-                     standUserContent.innerHTML = content;
-                     admin = false;
+                    if (doc.data().type.toString() === "Teacher")
+                    {
+                        let content = 
+                        `
+                            <div id = 'main-content'>
+                                <div id = 'enrolled'>
+                                    <h1>Classes:</h1>
+                                </div>
+                                <div id = 'progress'>
+                                    <h1>Students:</h1>
+                                </div>
+                                <div id = 'next'>
+                                    <h1>What's Next?</h1>
+                                </div>
+                            </div>
+                        `;
+
+                        standUserContent.innerHTML = content;
+                    }
+                    else
+                    {
+                        let content = 
+                        `
+                            <div id = 'main-content'>
+                                <div id = 'enrolled'>
+                                    <h1>Enrolled Courses:</h1>
+                                </div>
+                                <div id = 'progress'>
+                                    <h1>Last Leftoff:</h1>
+                                </div>
+                                <div id = 'next'>
+                                    <h1>What's Next?</h1>
+                                </div>
+                            </div>
+                        `;
+
+                        standUserContent.innerHTML = content;
+                    }
                 }
             })
         })
-
-        if (admin)
-        {
-            location.href = 'admin.html';
-        }
     }
     else
     {
