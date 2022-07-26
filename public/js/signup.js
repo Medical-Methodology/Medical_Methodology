@@ -19,7 +19,8 @@ signUpForm.addEventListener('submit', (e) =>
         db.collection('users').doc(cred.user.uid).set(
         {
             name : signUpForm['first-name'].value + ' ' + signUpForm['last-name'].value,
-            uid : cred.user.uid
+            uid : cred.user.uid,
+            type : signUpForm['option'].value
         })
 
         db.collection('statistics').doc('enrolled').get().then(snapshot =>

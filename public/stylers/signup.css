@@ -128,8 +128,32 @@ main
 
 #password-limit
 {
-    font-size: 15px;
-    padding-top: 5px;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: red;
+    border:black solid;
+    border-width: 3px;
+    border-radius: 5px
+}
+
+#option
+{
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    border: black solid;
+    border-width: 3px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #983dcd;
+}
+
+option
+{
+    font-weight: 500;
+    background-color: rgb(174, 125, 238);
 }
 
 #small-gap
@@ -178,6 +202,7 @@ main
 {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 50px;
+    letter-spacing: 2px;
     color: white;
     text-decoration: none;
     text-align: left;

@@ -85,82 +85,126 @@ header
 
 main
 {
-    background-image:linear-gradient(#f2adad, #ba7edc);
+    background-image:linear-gradient(256deg, #b867ff, #ff9b82);
     max-height: fit-content;
     min-height: 90vh;
 }
 
-#addresses
+#title
 {
-    padding-top: 3vh;
+    font-size: 50px;
+    padding-top: 5vh;
+    padding-bottom: 30px;
+}
+
+.row
+{
     display: flex;
     flex-wrap: inherit;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
     margin: auto;
-    padding-bottom: 15vh;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
 }
 
-#title
+.course
 {
-    padding-top: 3vh;
-    font-size: 50px;
-}
-
-#addresses div
-{
-    background-color:#d182ff;
-    padding: 15px;
-    border: yellow solid;
-    border-width: 4px;
-    border-radius: 7px;
-    width: 30%;
+    padding: 25px 0px 25px 0px;
+    border: black solid;
+    border-width: 3px;
+    border-radius: 15px;
+    min-width: 30%;
+    width: 30;
     height: fit-content;
 }
 
-#addresses h1
+.course a
 {
-    text-decoration: underline;
+    color: white;
 }
 
-#addresses p
+.description
 {
-    line-height: 30px;
+    display: none;
 }
 
-.email
+.course:hover .description
 {
-    color: rgb(14, 124, 168);
-    text-decoration: underline;
-}
-
-#addresses textarea
-{
-    min-width: 23vw;
-    max-width: 23vw;
-    min-height: 25vh;
-    text-align: left;
-    border: black solid;
-    border-width: 3px;
-    border-radius: 5px;
-    font-size: 13px;
-    padding: 5px;
-}
-
-#addresses ::placeholder
-{
-    font-size: 13px;
-}
-
-.submit-button
-{
-    background-color: yellow;
+    display:block;
+    font-size: 18px;
     font-weight: 500;
-    padding: 5px 7px 5px 7px;
-    border: black solid;
-    border-width: 3px;
-    border-radius: 5px;
+    line-height: 30px;
+    margin: auto;
+    width: 90%;
 }
+
+.spacer
+{
+    padding: 0px 1.5vw 0px 1.5vw;
+}
+
+#biology
+{
+    color: white;
+    background-image: url('../images/biology.jpg');
+}
+
+#microbiology
+{
+    color: white;
+    background-image: url('../images/microbiology.png');
+    background-size: 450px;
+}
+
+#biochemistry
+{
+    color: white;
+    background-image: url('../images/biochemistry.jpg');
+}
+
+#anatomy
+{
+    color: white;
+    background-image: url('../images/anatomy.jpg');
+}
+
+#physiology
+{
+    color: white;
+    background-image: url('../images/physiology.jpeg');
+    background-size: 500px;
+}
+
+#ecology
+{
+    color: white;
+    background-image: url('../images/ecology.jpg');
+    background-size: 550px;
+}
+
+#genetics
+{
+    color: white;
+    background-image: url('../images/genetics.jpeg');
+    background-size: 550px;
+}
+
+#immunology
+{
+    color: white;
+    background-image: url('../images/immunology.png');
+    background-size: 550px;
+}
+
+#psychology
+{
+    color: white;
+    background-image: url('../images/psychology.jpg');
+    background-size: 500px;
+}
+
 #bottom-content
 {
     border-top: black solid;
@@ -191,7 +235,7 @@ main
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 55px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 #bottom-content p
@@ -215,7 +259,7 @@ main
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 65px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     text-decoration: underline;
 }
 

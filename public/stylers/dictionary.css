@@ -150,9 +150,8 @@ main
     border: black solid;
     border-width: 5px;
     border-radius: 10px;
-    width: fit-content;
     padding: 15px;
-    height: 50vh;
+    height: 60vh;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -185,6 +184,7 @@ main
 {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 50px;
+    letter-spacing: 2px;
     color: white;
     text-decoration: none;
     text-align: left;

@@ -54,7 +54,7 @@ var searchTools =
     <h1 style = 'font-size: 25px; padding-top: 10px; padding-bottom: 5px;'>Search</h1>
 
     <!-- Search bar -->
-    <form action = 'dictionary.html' method = 'POST' id = 'search-bar' style = 'padding-bottom: 15px;'>
+    <form action = 'dictionary.html' method = 'POST' id = 'search-bar' style = 'padding-bottom: 15px; width: 80%; margin: auto;'>
         <input type = 'text' name = 'search' id = 'search' style = 
         '
             font-size: 18px;
@@ -68,7 +68,7 @@ var searchTools =
     </form>
 
     <!-- Creates div that will be filled with a list of terms, div will be closed later -->
-    <div id = 'listOfTerms'>
+    <div id = 'listOfTerms' style = 'max-width: fit-content;'>
 `;
 
 // Checks if user is authenticated
