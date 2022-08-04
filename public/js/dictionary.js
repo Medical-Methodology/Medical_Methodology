@@ -68,7 +68,7 @@ var searchTools =
     </form>
 
     <!-- Creates div that will be filled with a list of terms, div will be closed later -->
-    <div id = 'listOfTerms' style = 'max-width: fit-content;'>
+    <div id = 'listOfTerms' style = 'max-width: fit-content; margin: auto;'>
 `;
 
 // Checks if user is authenticated

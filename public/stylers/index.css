@@ -262,10 +262,7 @@ main h1
     color: white;
     text-decoration: none;
     text-align: left;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 55px;
-    padding-bottom: 20px;
+    padding: 4vh 0px 10px 0px;
 }
 
 #bottom-content p
@@ -276,7 +273,13 @@ main h1
     font-weight: 400;
 }
 
-#bottom-content a
+#left-column a
+{
+    font-weight: 500;
+    color: rgb(0, 0, 255);
+}
+
+#center-column a
 {
     color: white;
 }
@@ -284,12 +287,9 @@ main h1
 #bottom-content h2
 {
     color:white;
-    font-size: 35px;
+    font-size: 40px;
     text-align: left;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 65px;
-    padding-bottom: 20px;
+    padding: 5.5vh 0px 10px 0px;
     text-decoration: underline;
 }
 

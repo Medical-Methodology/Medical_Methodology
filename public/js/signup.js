@@ -1,6 +1,7 @@
 // Links constants to HTML elements
 const signUpForm = document.querySelector('#signup-form');
 const signUpError = document.querySelector('#error');
+const optionError = document.querySelector('#option-error');
 
 // Creates listener for the submit button
 signUpForm.addEventListener('submit', (e) =>
@@ -12,43 +13,14 @@ signUpForm.addEventListener('submit', (e) =>
     const email = signUpForm['email'].value;
     const password = signUpForm['password'].value;
 
-    // Creates user and enters details into database
-    auth.createUserWithEmailAndPassword(email, password).then(cred =>
-    {
-        // Creates document within collection containing user-info
-        db.collection('users').doc(cred.user.uid).set(
-        {
-            name : signUpForm['first-name'].value + ' ' + signUpForm['last-name'].value,
-            uid : cred.user.uid,
-            type : signUpForm['option'].value
-        })
+    console.log(signUpForm['option'].value);
 
-        db.collection('statistics').doc('enrolled').get().then(snapshot =>
-        {
-            db.collection('statistics').doc('enrolled').set(
-            {
-                number : (snapshot.data().number + 1)
-            })
-        })
-    }).then(() =>
+    if ((signUpForm['option'].value == ("Teacher")) || (signUpForm['option'].value !== ('Student')))
     {
-        // Logs success to console
-        console.log("Successfully created user and stored information to database.");
-        
-        // Delay to allow DB to store data before redirect
-        setTimeout(function() 
-        {
-            location.href = "user.html";
-        }, 
-        1000
-        );
-
-        // Catches error with signup (incorrect email format, password length)
-    }).catch(function(error)
-    {
-        // Creates error message
-        let html =
+        console.log(signUpForm['option'].value.toString());
+        let html = 
         `
+            <div style = 'padding-top: 18px;'></div>
             <p style = 
             '
             background-color: red;
@@ -58,13 +30,67 @@ signUpForm.addEventListener('submit', (e) =>
             border: black solid;
             border-radius: 5px;
             font-weight: 500;
-            '>Error: Improper email format.</p>
-            <div style = 'padding: 11px;'></div>
+            '>Error: Invalid choice.</p>
         `;
 
-        // Injects HTML
-        signUpError.innerHTML = html;
-    })
+        optionError.innerHTML = html;
+    }
+    else
+        {
+        // Creates user and enters details into database
+        auth.createUserWithEmailAndPassword(email, password).then(cred =>
+        {
+            // Creates document within collection containing user-info
+            db.collection('users').doc(cred.user.uid).set(
+            {
+                name : signUpForm['first-name'].value + ' ' + signUpForm['last-name'].value,
+                uid : cred.user.uid,
+                type : signUpForm['option'].value
+            })
+
+            db.collection('statistics').doc('enrolled').get().then(snapshot =>
+            {
+                db.collection('statistics').doc('enrolled').set(
+                {
+                    number : (snapshot.data().number + 1)
+                })
+            })
+        }).then(() =>
+        {
+            // Logs success to console
+            console.log("Successfully created user and stored information to database.");
+            
+            // Delay to allow DB to store data before redirect
+            setTimeout(function() 
+            {
+                location.href = "user.html";
+            }, 
+            1000
+            );
+
+            // Catches error with signup (incorrect email format, password length)
+        }).catch(function(error)
+        {
+            // Creates error message
+            let html =
+            `
+                <p style = 
+                '
+                background-color: red;
+                width: fit-content;
+                padding: 10px;
+                margin: auto;
+                border: black solid;
+                border-radius: 5px;
+                font-weight: 500;
+                '>Error: Improper email format.</p>
+                <div style = 'padding: 11px;'></div>
+            `;
+
+            // Injects HTML
+            signUpError.innerHTML = html;
+        })
+    }
 });
 
 
