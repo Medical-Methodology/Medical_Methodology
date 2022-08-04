@@ -96,18 +96,19 @@ main
     border-radius: 5px;
     padding: 25px;
     padding-top: 15px;
-    width: fit-content;
+    min-width: fit-content;
+    width: 22%;
     margin: auto;
 }
 
 #details h1
 {
-    font-size: 40px;
+    font-size: 45px;
     text-decoration: underline;
     padding-bottom: 15px;
 }
 
-#first-name, #last-name, #details #email, #password
+#name, #details #email, #password
 {
     background-color:#b17ecf;
     border: black solid;
@@ -128,13 +129,10 @@ main
 
 #password-limit
 {
-    padding: 5px;
     font-size: 13px;
-    font-weight: 500;
-    background-color: red;
-    border:black solid;
-    border-width: 3px;
-    border-radius: 5px
+    font-weight: 600;
+    width: fit-content;
+    margin: auto;
 }
 
 #option
@@ -165,18 +163,13 @@ option
 {
     font-size: 16px;
     font-weight: 600;
-    background-color: red;
+    background-color: rgb(255, 148, 148);
     border: black solid;
     border-width: 4px;
     border-radius: 5px;
     padding: 15px;
     padding-top: 6px;
     padding-bottom: 6px;
-}
-
-#error-gap
-{
-    padding: 10px;
 }
 
 #bottom-content

@@ -10,7 +10,7 @@
 header
 {
     padding-bottom: 100px;
-    background-color: #f2adad;
+    background-image:linear-gradient(90deg, #f2adad, #ba7edc);
 }
 
 #bar

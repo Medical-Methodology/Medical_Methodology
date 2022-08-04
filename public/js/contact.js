@@ -25,7 +25,7 @@ auth.onAuthStateChanged((user) =>
             <!-- Logout button -->
             <button style = 
             '
-            margin-right: 5vw;
+            margin-right: 13vw;
             background: transparent;
             border: transparent;
             font-size: 22px;

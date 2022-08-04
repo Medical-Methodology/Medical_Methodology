@@ -94,6 +94,32 @@ main
     height: 100vh;
 }
 
+#classes
+{
+    display: flex; 
+    justify-content: space-between; 
+    width: 25%; 
+    margin: auto;
+    padding: 1vw; 
+    align-items: center;
+    background-color: rgb(255, 157, 87);
+    height: fit-content;
+    border: black solid;
+    border-width: 4px;
+    border-radius: 6px;
+}
+
+#create-class, #join-class
+{
+    background-color: #a165f4;
+    padding: 7px 10px 7px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    border: black solid;
+    border-width: 3px;
+    border-radius: 5px;
+}
+
 #main-content
 {
     width: 90%;
