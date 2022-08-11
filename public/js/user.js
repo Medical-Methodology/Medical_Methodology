@@ -58,21 +58,67 @@ auth.onAuthStateChanged(user =>
                     {
                         let content = 
                         `
-                            <div id = 'main-content'>
+                            <div id = 'main-content' style = 'width: 90%; margin: auto; display: flex; text-align: center; gap: 10%;'>
                                 <div id = 'enrolled'>
                                     <h1>Classes:</h1>
-                                    <p>${}
+                                    <div id = 'classes-list'></div>
                                 </div>
                                 <div id = 'progress'>
                                     <h1>Students:</h1>
+                                    <div id = 'students-list'></div>
                                 </div>
                                 <div id = 'next'>
                                     <h1>What's Next?</h1>
                                 </div>
                             </div>
                         `;
-
+                            
                         standUserContent.innerHTML = content;
+                        const classesList = document.querySelector('#classes-list');
+                        const studentsList = document.querySelector('#students-list');
+
+                        db.collection('users').doc(user.uid).collection('classes').get().then(snapshot =>
+                        {
+                            let html = '';
+                            snapshot.docs.forEach(doc =>
+                            {
+                                const td =
+                                `
+                                    <p style = 'font-size: 18px; font-weight: 500; padding: 10px 0px 10px 0px;'>${doc.data().name}</p>
+                                `;
+                                html += td;
+                            })
+
+                            classesList.innerHTML = html;
+                        }) 
+
+                        db.collection('users').doc(user.uid).collection('classes').get().then(snapshot =>
+                        {
+                            let counter = 1;
+                            snapshot.docs.forEach(doc =>
+                            {
+                                db.collection('classes').doc(doc.id).collection('students').get().then(snapshot =>
+                                {
+                                    let html = '';
+                                    snapshot.docs.forEach(doc =>
+                                    {
+                                        const td = 
+                                        `
+                                            <p style = 'font-size: 18px; font-weight: 500; padding: 10px 0px 10px 0px;'>${counter}. ${doc.data().name}</p>
+                                        `;
+    
+                                        html += td;
+                                        counter += 1;
+                                    })
+                                    studentsList.innerHTML = html;
+                                })
+                            })
+                        })
+
+                        //             <div id = 'next'>
+                        //                 <h1>What's Next?</h1>
+                        //             </div>
+                        //         </div>
                     }
                     else
                     {
