@@ -10,7 +10,7 @@
 header
 {
     padding-bottom: 100px;
-    background-color: #f2adad;
+    background-image:linear-gradient(256deg, #b867ff, #ff9b82);
 }
 
 #bar
@@ -109,6 +109,11 @@ main
     text-align: center;
 }
 
+.course-name
+{
+    text-decoration: underline;
+}
+
 .course
 {
     padding: 25px 0px 25px 0px;
@@ -116,18 +121,31 @@ main
     border-width: 3px;
     border-radius: 15px;
     min-width: 30%;
-    width: 30;
+    width: 30%;
     height: fit-content;
-}
-
-.course a
-{
-    color: white;
 }
 
 .description
 {
     display: none;
+}
+
+.learn-more
+{
+    display: none;
+}
+
+.course:hover
+{
+    padding-bottom: 10px;
+}
+
+.course:hover #black-cover
+{
+    border-radius: 5px;
+    margin: -25px 0px -10px 0px;
+    padding: 25px 0px 10px 0px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .course:hover .description
@@ -136,13 +154,27 @@ main
     font-size: 18px;
     font-weight: 500;
     line-height: 30px;
+    padding: 10px 0px 10px 0px;
     margin: auto;
     width: 90%;
 }
 
+.course:hover .learn-more
+{
+    display: block;
+    background-color:#ff9b82;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px 10px 5px 10px;
+    border: black solid;
+    border-width: 3px;
+    border-radius: 5px;
+    margin: auto;
+}
+
 .spacer
 {
-    padding: 0px 1.5vw 0px 1.5vw;
+    padding: 0px 1vw 0px 1vw;
 }
 
 #biology
@@ -155,13 +187,14 @@ main
 {
     color: white;
     background-image: url('../images/microbiology.png');
-    background-size: 450px;
+    background-size: 520px;
 }
 
 #biochemistry
 {
     color: white;
     background-image: url('../images/biochemistry.jpg');
+    background-size: 420px;
 }
 
 #anatomy
@@ -181,21 +214,21 @@ main
 {
     color: white;
     background-image: url('../images/ecology.jpg');
-    background-size: 550px;
+    background-size: 610px;
 }
 
 #genetics
 {
     color: white;
     background-image: url('../images/genetics.jpeg');
-    background-size: 550px;
+    background-size: 600px;
 }
 
 #immunology
 {
     color: white;
     background-image: url('../images/immunology.png');
-    background-size: 550px;
+    background-size: 640px;
 }
 
 #psychology

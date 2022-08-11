@@ -13,11 +13,9 @@ signUpForm.addEventListener('submit', (e) =>
     const email = signUpForm['email'].value;
     const password = signUpForm['password'].value;
 
-    console.log(signUpForm['option'].value);
 
-    if ((signUpForm['option'].value == ("Teacher")) || (signUpForm['option'].value !== ('Student')))
+    if ((signUpForm['option'].value != ("Teacher")) && (signUpForm['option'].value != ('Student')))
     {
-        console.log(signUpForm['option'].value.toString());
         let html = 
         `
             <div style = 'padding-top: 18px;'></div>
@@ -69,26 +67,53 @@ signUpForm.addEventListener('submit', (e) =>
             );
 
             // Catches error with signup (incorrect email format, password length)
-        }).catch(function(error)
+        })
+        .catch(function(error)
         {
-            // Creates error message
-            let html =
-            `
-                <p style = 
-                '
-                background-color: red;
-                width: fit-content;
-                padding: 10px;
-                margin: auto;
-                border: black solid;
-                border-radius: 5px;
-                font-weight: 500;
-                '>Error: Improper email format.</p>
-                <div style = 'padding: 11px;'></div>
-            `;
+            if (error.code == "auth/invalid-email")
+            {
+                // Creates error message
+                let html =
+                `
+                    <div style = 'padding: 5px 0px 5px 0px;'></div>
+                    <p style = 
+                    '
+                    background-color: red;
+                    width: fit-content;
+                    padding: 5px 10px 5px 10px;
+                    margin: auto;
+                    border: black solid;
+                    border-radius: 5px;
+                    font-weight: 500;
+                    '>Error: Improper email format.</p>
+                    <div style = 'padding: 11px;'></div>
+                `;
 
-            // Injects HTML
-            signUpError.innerHTML = html;
+                // Injects HTML
+                signUpError.innerHTML = html;
+            }
+            else if (error.code == "auth/weak-password")
+            {
+                // Creates error message
+                let html =
+                `
+                    <div style = 'padding: 5px 0px 5px 0px;'></div>
+                    <p style = 
+                    '
+                    background-color: red;
+                    width: fit-content;
+                    padding: 5px 10px 5px 10px;
+                    margin: auto;
+                    border: black solid;
+                    border-radius: 5px;
+                    font-weight: 500;
+                    '>Error: Password is too weak.</p>
+                    <div style = 'padding: 11px;'></div>
+                `;
+
+                // Injects HTML
+                signUpError.innerHTML = html;
+            }
         })
     }
 });

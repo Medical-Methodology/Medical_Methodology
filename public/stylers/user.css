@@ -120,15 +120,6 @@ main
     border-radius: 5px;
 }
 
-#main-content
-{
-    width: 90%;
-    margin: auto;
-    display: flex;
-    text-align: center;
-    gap: 10%;
-}
-
 #enrolled, #progress, #next
 {
     width: 100%;
