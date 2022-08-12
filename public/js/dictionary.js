@@ -461,8 +461,10 @@ function definitionPopup(counter)
                     createTermWindow();
                     document.querySelector('#term').value = snapshot.docs[counter-1].data().term;
                     document.querySelector('#definition').value = snapshot.docs[counter-1].data().definition;
-                    document.querySelector('#common-fields').value = snapshot.docs[counter-1].data().common_fields;
                     document.querySelector('#abbreviations').value = snapshot.docs[counter-1].data().abbreviations;
+                    document.querySelector('#prefix').value = snapshot.docs[counter-1].data();
+                    document.querySelector('#suffix').value = snapshot.docs[counter-1].data();
+                    document.querySelector('#root').value = snapshot.docs[counter-1].data();
                 })
 
                 const deleteButton = document.querySelector('#delete-button');
@@ -488,7 +490,7 @@ function createTermWindow()
     let html =
     `
         <div id = 'black-screen' style = 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0 , 0.8);'></div>
-        <div style = 'position: absolute; top: 30%; left: 35%; width: 30%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>    
+        <div style = 'position: absolute; top: 20%; left: 35%; width: 30%; height: fit-content; margin: auto; background-image:linear-gradient(295deg, #f2adad, #ba7edc); border: #861ff4 solid; border-width: 7px; border-radius: 15px; padding: 3px 20px 5px 20px;'>    
             <!-- Form for admins to create new terms -->
             <form action = 'dictionary.html' method = 'POST' id = 'new-term'>
                     <!-- Term entry -->
@@ -498,9 +500,15 @@ function createTermWindow()
                     <!-- Definition entry -->
                     <textarea type = 'text' placeholder = 'Definition...' name = 'definition' id = 'definition' style = 'font-size: 14px; background: transparent; min-width: 95%; max-width: 95%; min-height: 15vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px;'></textarea>
                     <br></br>
-                    <textarea type = 'text' placeholder = 'Common Fields...' name = 'common-fields' id = 'common-fields' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
-                    <br></br>
                     <textarea type = 'text' placeholder = 'Abbreviations...' name = 'abbreviations' id = 'abbreviations' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
+                    <br></br>
+                    <textarea type = 'text' placeholder = 'Prefix...' name = 'prefix' id = 'prefix' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
+                    <br></br>
+                    <textarea type = 'text' placeholder = 'Suffix...' name = 'suffix' id = 'suffix' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
+                    <br></br>
+                    <textarea type = 'text' placeholder = 'Root Word...' name = 'root' id = 'root' style = 'background: transparent; min-width: 40%; max-width: 95%; height: 4vh; min-height: 4vh; border: black solid; border-width: 2px; border-radius: 6px; padding: 5px; justify-content: left;'></textarea>
+                    <br></br>
+
                     <style>
                     ::placeholder
                     {
